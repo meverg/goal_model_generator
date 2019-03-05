@@ -2,7 +2,7 @@ import re
 
 lines = []
 
-f = open("story.txt", "r").read().splitlines()
+f = open("us.txt", "r").read().splitlines()
 
 for x in f:
 	if x:
