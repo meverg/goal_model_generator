@@ -1,4 +1,5 @@
 import re
+import Parser
 
 refinementId = 0
 goalId = 0
@@ -33,6 +34,7 @@ class Goal:
 class UserStory:
 	def __init__(self, id_):
 		self.id_ = id_
+		self.text
 		self.role
 		self.action
 		self.reason
@@ -40,6 +42,17 @@ class UserStory:
 		self.content = None
 
 userStories = []
+goals = []
+refinements = []
+
+for idx, us in enumerate(Parser.df_clean[0]):
+	tmp_us = UserStory(idx)
+	tmp_us.text = us
+	tmp_us.role = Parser.get_role_of(Parser.nlp(us))
+	tmp_us.role = Parser.get_action_of(Parser.nlp(us))
+	userStories.append(tmp_us)
+
+
 
 for u in userStories:
 	if contains(goals, lambda g: g.name == u.role):
@@ -69,8 +82,7 @@ for u in userStories:
 		goals.append(newGoal)
 		newRef.childs.append(newGoal)
 
-goals = []
-refinements = []
+
 
 smt = '(set-option :produce-models true)\r\n(set-option :opt.priority lex)\r\n\r\n'
 
