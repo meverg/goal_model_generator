@@ -1,43 +1,24 @@
 import re
 
-lines = []
+refinementId = 0
+goalId = 0
 
-f = open("us.txt", "r").read().splitlines()
-
-for x in f:
-	if x:
-		lines.append(x)
-
-actors = []
-goals = []
-reasons = []
-
-for line in lines:
-	line = re.sub("[^A-Za-z']+", ' ', str(line)).lower()
-	result = re.search('as (a|an) (.*) i want to (.*) (so that i|so i|so that) (.*).', line)
-	act_ = result.group(2).replace(" ", "_")
-	goal_ = result.group(3).replace(" ", "_")
-	reason_ = result.group(5).replace(" ", "_")
-	actors.append(act_.replace("'", "_"))
-	goals.append(goal_.replace("'", "_"))
-	reasons.append(reason_.replace("'", "_"))
-
-# actors = ['A', 'A', 'B']
-# goals = ['C', 'D', 'E']
+def contains(list, filter):
+    for x in list:
+        if filter(x):
+            return True
+    return False
 
 class Refinement:
-	def __init__(self, name):
-		self.name = name
+	def __init__(self, id_):
+		self.id_ = 'R' +id_
 		self.childs = []
 		self.parent
-	def addChild(self, child):
-		self.childs.append(child)
-	def setParent(self, parent):
-		self.parent = parent
 
 class Goal:
-	def __init__(self, name):
-		self.name = name
+	def __init__(self, id_):
+		self.id_ = 'G' + id_
+		self.name
 		self.isMandatory = False
 		self.isRoot = False
 		self.isLeaf = False
@@ -48,8 +29,45 @@ class Goal:
 		self.isRoot = True
 	def setLeaf(self):
 		self.isLeaf = True
-	def addChild(self, child):
-		self.childs.append(child)
+
+class UserStory:
+	def __init__(self, id_):
+		self.id_ = id_
+		self.role
+		self.action
+		self.reason
+		self.weight = []
+		self.content = None
+
+userStories = []
+
+for u in userStories:
+	if contains(goals, lambda g: g.name == u.role):
+		newGoal = Goal(goalId)
+		goalId += 1
+		newGoal.setLeaf()
+		newGoal.name = u.action
+		goals.append(newGoal)
+		newRef = Refinement(refinementId)
+		refinementId += 1
+		newRef.childs.append(newGoal)
+		newRef.parent = goals(filter(lambda g: g.name == u.role))[0].id_
+	else:
+		newGoal = Goal(goalId)
+		goalId += 1
+		newGoal.setRoot()
+		newGoal.setMandatory()
+		newGoal.name = u.role
+		goals.append(newGoal)
+		newRef = Refinement(refinementId)
+		refinementId += 1
+		newRef.parent = newGoal.name
+		newGoal = Goal(goalId)
+		goalId += 1
+		newGoal.setLeaf()
+		newGoal.name = u.action
+		goals.append(newGoal)
+		newRef.childs.append(newGoal)
 
 goals = []
 refinements = []
@@ -57,29 +75,29 @@ refinements = []
 smt = '(set-option :produce-models true)\r\n(set-option :opt.priority lex)\r\n\r\n'
 
 for g in goals:
-	smt += '(declare-fun ' + g.name + ' () Bool) \r\n'
+	smt += '(declare-fun ' + g.id_ + ' () Bool) \r\n'
 	if g.isMandatory:
-		smt += '(assert ' + g.name + ')\r\n(assert-soft ' + g.name +' :id unsat_requirements)\r\n'
+		smt += '(assert ' + g.id_ + ')\r\n(assert-soft ' + g.id_ +' :id unsat_requirements)\r\n'
 
 for r in refinements:
-	smt += '(declare-fun ' + r.name + ' () Bool) \r\n'
+	smt += '(declare-fun ' + r.id_ + ' () Bool) \r\n'
 
 for g in goals:
 	if not g.isLeaf:
-		smt += '(assert (=> ' + g.name + '(or '
+		smt += '(assert (=> ' + g.id_ + '(or '
 		for c in g.childs:
 			smt += c + ' '
 		smt += ')))\r\n'
 
 for r in refinements:
-	smt += '(assert (and (= ' + r.name + ' (and '
+	smt += '(assert (and (= ' + r.id_ + ' (and '
 	for c in r.childs:
 		smt += c + ' '
-	smt += ')) (=> ' + r.name + ' ' + r.parent + ' )))\r\n'
+	smt += ')) (=> ' + r.id_ + ' ' + r.parent + ' )))\r\n'
 
 for g in goals:
 	if g.isLeaf:
-		smt += '(assert-soft (not ' + g.name +' ) :id sat_tasks)\r\n'
+		smt += '(assert-soft (not ' + g.id_ +' ) :id sat_tasks)\r\n'
 
 smt += '(minimize unsat_requirements)\r\n(minimize sat_tasks)\r\n(check-sat)\r\n(get-objectives)\r\n(load-objective-model 1)\r\n(get-model)\r\n(exit)'
 
