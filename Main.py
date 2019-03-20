@@ -11,14 +11,14 @@ def contains(list, filter):
 
 class Refinement:
 	def __init__(self, id_):
-		self.id_ = 'R' +id_
+		self.id_ = 'R' + str(id_)
 		self.childs = []
-		self.parent
+		self.parent = None
 
 class Goal:
 	def __init__(self, id_):
-		self.id_ = 'G' + id_
-		self.name
+		self.id_ = 'G' + str(id_)
+		self.name = None
 		self.isMandatory = False
 		self.isRoot = False
 		self.isLeaf = False
@@ -33,13 +33,31 @@ class Goal:
 class UserStory:
 	def __init__(self, id_):
 		self.id_ = id_
-		self.role
-		self.action
-		self.reason
+		self.role = None
+		self.action = None
+		self.reason = None
 		self.weight = []
 		self.content = None
 
+a = UserStory(1)
+b = UserStory(2)
+c = UserStory(3)
+
+a.role = 'publisher'
+a.action = 'sign up'
+b.role = 'publisher'
+b.action = 'publish'
+c.role = 'admin'
+c.action = 'create profile'
+
+
 userStories = []
+goals = []
+refinements = []
+
+userStories.append(a)
+userStories.append(b)
+userStories.append(c)
 
 for u in userStories:
 	if contains(goals, lambda g: g.name == u.role):
@@ -51,7 +69,10 @@ for u in userStories:
 		newRef = Refinement(refinementId)
 		refinementId += 1
 		newRef.childs.append(newGoal)
-		newRef.parent = goals(filter(lambda g: g.name == u.role))[0].id_
+		newRef.parent = list(filter(lambda g: g.name == u.role, goals))[0].id_
+		list(filter(lambda g: g.name == u.role, goals))[0].childs.append(newRef)
+		refinements.append(newRef)
+
 	else:
 		newGoal = Goal(goalId)
 		goalId += 1
@@ -61,16 +82,15 @@ for u in userStories:
 		goals.append(newGoal)
 		newRef = Refinement(refinementId)
 		refinementId += 1
-		newRef.parent = newGoal.name
+		newRef.parent = newGoal.id_
+		newGoal.childs.append(newRef)
 		newGoal = Goal(goalId)
 		goalId += 1
 		newGoal.setLeaf()
 		newGoal.name = u.action
 		goals.append(newGoal)
 		newRef.childs.append(newGoal)
-
-goals = []
-refinements = []
+		refinements.append(newRef)
 
 smt = '(set-option :produce-models true)\r\n(set-option :opt.priority lex)\r\n\r\n'
 
@@ -86,13 +106,13 @@ for g in goals:
 	if not g.isLeaf:
 		smt += '(assert (=> ' + g.id_ + '(or '
 		for c in g.childs:
-			smt += c + ' '
+			smt += c.id_ + ' '
 		smt += ')))\r\n'
 
 for r in refinements:
 	smt += '(assert (and (= ' + r.id_ + ' (and '
 	for c in r.childs:
-		smt += c + ' '
+		smt += c.id_ + ' '
 	smt += ')) (=> ' + r.id_ + ' ' + r.parent + ' )))\r\n'
 
 for g in goals:
