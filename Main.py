@@ -1,9 +1,16 @@
 import Parser
 import IO
+import random
 
 refinementId = 0
 goalId = 0
 
+userStories = []
+goals = []
+refinements = []
+
+smt = ''
+goalSet = ''
 
 def contains(list, filter):
   for x in list:
@@ -11,13 +18,11 @@ def contains(list, filter):
       return True
   return False
 
-
 class Refinement:
   def __init__(self, id_):
     self.id_ = 'R' + str(id_)
     self.children = []
     self.parent = None
-
 
 class Goal:
   def __init__(self, id_):
@@ -39,7 +44,6 @@ class Goal:
   def setLeaf(self):
     self.isLeaf = True
 
-
 class UserStory:
   def __init__(self, id_):
     self.id_ = id_
@@ -49,7 +53,6 @@ class UserStory:
     self.pWeight = []
     self.nWeight = []
     self.content = None
-
 
 # a = UserStory(1)
 # b = UserStory(2)
@@ -68,15 +71,9 @@ class UserStory:
 # c.pWeight.append(('pos', 4))
 # c.nWeight.append(('eff', 2))
 
-userStories = []
-goals = []
-refinements = []
-
 # userStories.append(a)
 # userStories.append(b)
 # userStories.append(c)
-goals = []
-refinements = []
 
 input = IO.get_input()
 
@@ -85,13 +82,16 @@ for idx, us in enumerate(input):
   tmp_us.content = us
   tmp_us.role = Parser.get_role_of(Parser.nlp(us))
   tmp_us.action = Parser.get_action_of(Parser.nlp(us))
+  tmp_us.pWeight.append(('gain', random.randint(0,20)))
+  tmp_us.pWeight.append(('attr', random.randint(0,10)))
+  tmp_us.nWeight.append(('effort', random.randint(0,5)))
   if tmp_us.action is not None and tmp_us.role is not None:
     userStories.append(tmp_us)
-
 
 for u in userStories:
   if contains(goals, lambda g: g.name == u.role):
     newGoal = Goal(goalId)
+    goalSet += 'G' + str(goalId) + ' : ' + u.content + '\r\n'
     goalId += 1
     newGoal.setLeaf()
     for p in u.pWeight:
@@ -106,7 +106,6 @@ for u in userStories:
     newRef.parent = list(filter(lambda g: g.name == u.role, goals))[0].id_
     list(filter(lambda g: g.name == u.role, goals))[0].children.append(newRef)
     refinements.append(newRef)
-
   else:
     newGoal = Goal(goalId)
     goalId += 1
@@ -119,6 +118,7 @@ for u in userStories:
     newRef.parent = newGoal.id_
     newGoal.children.append(newRef)
     newGoal = Goal(goalId)
+    goalSet += 'G' + str(goalId) + ' : ' + u.content + '\r\n'
     goalId += 1
     newGoal.setLeaf()
     for p in u.pWeight:
@@ -130,9 +130,7 @@ for u in userStories:
     newRef.children.append(newGoal)
     refinements.append(newRef)
 
-smt = '(set-option :produce-models true)\r\n(set-option :opt.priority lex)\r\n\r\n'
-
-weightCount = 0
+smt += '(set-option :produce-models true)\r\n(set-option :opt.priority lex)\r\n\r\n'
 
 for g in goals:
   smt += '(declare-fun ' + g.id_ + ' () Bool) \r\n'
@@ -159,15 +157,19 @@ for g in goals:
   if g.isLeaf:
     smt += '(assert-soft (not ' + g.id_ + ' ) :id sat_tasks)\r\n'
     for p in g.pWeight:
-      smt += '(assert-soft (not ' + g.id_ + ' ) :weight ' + str(p[1]) + ' :id ' + p[0] + ')\r\n'
+      smt += '(assert-soft ' + g.id_ + ' :weight ' + str(p[1]) + ' :id ' + p[0] + ')\r\n'
     for n in g.nWeight:
       smt += '(assert-soft ' + g.id_ + ' :weight ' + str(n[1]) + ' :id ' + n[0] + ')\r\n'
 
 for p in userStories[0].pWeight:
-  smt += '(minimize ' + p[0] + ')\r\n'
+  smt += '(maximize ' + p[0] + ')\r\n'
 for n in userStories[0].nWeight:
   smt += '(minimize ' + n[0] + ')\r\n'
 
 smt += '(minimize unsat_requirements)\r\n(minimize sat_tasks)\r\n(check-sat)\r\n(get-objectives)\r\n(load-objective-model 1)\r\n(get-model)\r\n(exit)'
 
-print(smt)
+f = open("output.txt", "w")
+f.write(smt)
+
+f2 = open("goal_set.txt", "w")
+f2.write(goalSet)
