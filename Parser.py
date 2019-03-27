@@ -28,25 +28,26 @@ def phrase_traversal(t_node, p_list, filter_args=[]):
   return p_list
 
 
-def get_action_of(doc):
-  root = [token for token in doc if token.similarity(nlp('want')) >= 0.9][0]
-  act_root_list = [child for child in root.children if child.dep_ == 'xcomp']
+def get_action_of(doc, idx=0):
+  root = [token for token in doc if token.has_vector and token.similarity(nlp('want')) >= 0.9][0]
+  act_root_list = [child for child in root.children if child.dep_ in ['xcomp', 'dobj', 'ccomp']]
   if act_root_list:
     act_root = act_root_list[0]
     phrase_list = phrase_traversal(act_root, [], ['advcl'])
     return ' '.join([str(e.text) for e in phrase_list])
   else:
-    print("Can't find the action for:\n\t{}".format(doc))
+    print("{} Can't find the action for:\n\t{}".format(idx, doc))
     return None
 
 
 def get_role_of(doc):
-  root = [token for token in doc if token.similarity(nlp('as')) >= 0.9][0]
+  root = [token for token in doc if token.has_vector and token.similarity(nlp('as')) >= 0.9][0]
   if root:
     role_subj_list = [child for child in root.children if child.dep_=='pobj']
     if role_subj_list:
       role_subj = role_subj_list[0]
-      return str(role_subj)
+      role_compound_list = [e for e in role_subj.lefts if e.dep_ == 'compound'] + [role_subj] + [e for e in role_subj.rights if e.dep_ == 'compound']
+      return ' '.join([str(e.text) for e in role_compound_list])
     else:
       print("Can't find the role for:\n\t{}".format(root))
       return None
