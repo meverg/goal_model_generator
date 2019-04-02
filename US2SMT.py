@@ -1,5 +1,17 @@
 import random
 import IO
+import os
+
+
+def get_oms_out():
+  return os.popen('./optimathsat/bin/optimathsat < output.txt').read()
+
+
+def contains(the_list, custom_filter):
+  for x in the_list:
+    if custom_filter(x):
+      return True
+  return False
 
 
 class US2SMT:
@@ -7,21 +19,15 @@ class US2SMT:
   def __init__(self, in_file, parser):
     self.parser = parser
     self.in_file = in_file
-    self.refinementId = 0
-    self.goalId = 0
+    self.refinement_id = 0
+    self.goal_id = 0
 
-    self.userStories = []
+    self.user_stories = []
     self.goals = []
     self.refinements = []
 
     self.smt = ''
-    self.goalSet = ''
-
-  def contains(self, the_list, filter):
-    for x in the_list:
-      if filter(x):
-        return True
-    return False
+    self.goal_set = ''
 
   class Refinement:
     def __init__(self, id_):
@@ -76,21 +82,21 @@ class US2SMT:
   # c.pWeight.append(('pos', 4))
   # c.nWeight.append(('eff', 2))
 
-  # userStories.append(a)
-  # userStories.append(b)
-  # userStories.append(c)
+  # user_stories.append(a)
+  # user_stories.append(b)
+  # user_stories.append(c)
 
   def get_smt_input(self):
     clean_input = IO.get_input(self.in_file)
-    refinementId = self.refinementId
-    goalId = self.goalId
+    refinement_id = self.refinement_id
+    goal_id = self.goal_id
 
-    userStories = self.userStories
+    user_stories = self.user_stories
     goals = self.goals
     refinements = self.refinements
 
     smt = self.smt
-    goalSet = self.goalSet
+    goal_set = self.goal_set
 
     for idx, us in enumerate(clean_input):
       tmp_us = self.UserStory(idx)
@@ -101,49 +107,49 @@ class US2SMT:
       tmp_us.pWeight.append(('attr', random.randint(0, 10)))
       tmp_us.nWeight.append(('effort', random.randint(0, 5)))
       if tmp_us.action is not None and tmp_us.role is not None:
-        userStories.append(tmp_us)
+        user_stories.append(tmp_us)
 
-    for u in userStories:
-      if self.contains(goals, lambda g: g.name == u.role):
-        newGoal = self.Goal(goalId)
-        goalSet += 'G' + str(goalId) + ' : ' + u.content + '\r\n'
-        goalId += 1
-        newGoal.set_leaf()
+    for u in user_stories:
+      if contains(goals, lambda g: g.name == u.role):
+        new_goal = self.Goal(goal_id)
+        goal_set += 'G' + str(goal_id) + ' : ' + u.content + '\r\n'
+        goal_id += 1
+        new_goal.set_leaf()
         for p in u.pWeight:
-          newGoal.pWeight.append(p)
+          new_goal.pWeight.append(p)
         for n in u.nWeight:
-          newGoal.nWeight.append(n)
-        newGoal.name = u.action
-        goals.append(newGoal)
-        newRef = self.Refinement(refinementId)
-        refinementId += 1
-        newRef.children.append(newGoal)
-        newRef.parent = list(filter(lambda g: g.name == u.role, goals))[0].id_
-        list(filter(lambda g: g.name == u.role, goals))[0].children.append(newRef)
-        refinements.append(newRef)
+          new_goal.nWeight.append(n)
+        new_goal.name = u.action
+        goals.append(new_goal)
+        new_ref = self.Refinement(refinement_id)
+        refinement_id += 1
+        new_ref.children.append(new_goal)
+        new_ref.parent = list(filter(lambda g: g.name == u.role, goals))[0].id_
+        list(filter(lambda g: g.name == u.role, goals))[0].children.append(new_ref)
+        refinements.append(new_ref)
       else:
-        newGoal = self.Goal(goalId)
-        goalId += 1
-        newGoal.set_root()
-        newGoal.set_mandatory()
-        newGoal.name = u.role
-        goals.append(newGoal)
-        newRef = self.Refinement(refinementId)
-        refinementId += 1
-        newRef.parent = newGoal.id_
-        newGoal.children.append(newRef)
-        newGoal = self.Goal(goalId)
-        goalSet += 'G' + str(goalId) + ' : ' + u.content + '\r\n'
-        goalId += 1
-        newGoal.set_leaf()
+        new_goal = self.Goal(goal_id)
+        goal_id += 1
+        new_goal.set_root()
+        new_goal.set_mandatory()
+        new_goal.name = u.role
+        goals.append(new_goal)
+        new_ref = self.Refinement(refinement_id)
+        refinement_id += 1
+        new_ref.parent = new_goal.id_
+        new_goal.children.append(new_ref)
+        new_goal = self.Goal(goal_id)
+        goal_set += 'G' + str(goal_id) + ' : ' + u.content + '\r\n'
+        goal_id += 1
+        new_goal.set_leaf()
         for p in u.pWeight:
-          newGoal.pWeight.append(p)
+          new_goal.pWeight.append(p)
         for n in u.nWeight:
-          newGoal.nWeight.append(n)
-        newGoal.name = u.action
-        goals.append(newGoal)
-        newRef.children.append(newGoal)
-        refinements.append(newRef)
+          new_goal.nWeight.append(n)
+        new_goal.name = u.action
+        goals.append(new_goal)
+        new_ref.children.append(new_goal)
+        refinements.append(new_ref)
 
     smt += '(set-option :produce-models true)\r\n(set-option :opt.priority lex)\r\n\r\n'
 
@@ -176,9 +182,9 @@ class US2SMT:
         for n in g.nWeight:
           smt += '(assert-soft ' + g.id_ + ' :weight ' + str(n[1]) + ' :id ' + n[0] + ')\r\n'
 
-    for p in userStories[0].pWeight:
+    for p in user_stories[0].pWeight:
       smt += '(maximize ' + p[0] + ')\r\n'
-    for n in userStories[0].nWeight:
+    for n in user_stories[0].nWeight:
       smt += '(minimize ' + n[0] + ')\r\n'
 
     smt += '(minimize unsat_requirements)\r\n(minimize sat_tasks)\r\n(check-sat)\r\n(get-objectives)\r\n(' \
@@ -188,6 +194,6 @@ class US2SMT:
     f.write(smt)
 
     f2 = open("goal_set.txt", "w")
-    f2.write(goalSet)
+    f2.write(goal_set)
 
-    return smt, goalSet
+    return smt, goal_set

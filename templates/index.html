@@ -1,6 +1,6 @@
 <html>
 <body>
-<form action="http://localhost:5000/solve_us" method="POST"
+<form action="{{ url_for('solve_us') }}" method="POST"
       enctype="multipart/form-data">
     <input type="file" name="us_file"/>
     <input type="submit"/>

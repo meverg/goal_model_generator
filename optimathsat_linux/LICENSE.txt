@@ -1,0 +1,13 @@
+OptiMathSAT is an extension of MathSAT 5 (http://mathsat.fbk.eu) and it is available
+at the same conditions as MathSAT 5 (http://mathsat.fbk.eu/download.html):
+
+OptiMathSAT is copyrighted 2009-2018 by Fondazione Bruno Kessler, Trento, Italy,
+University of Trento, Italy, and others. All rights reserved.
+
+OptiMathSAT is available for research and evaluation purposes only.
+It can not be used in a commercial environment, particularly as part of a
+commercial product, without written permission. OptiMathSAT is provided as is,
+without any warranty.
+
+Please write to optimathsat@unitn.it for additional questions regarding licensing
+OptiMathSAT or obtaining more up-to-date versions.
