@@ -2,6 +2,7 @@
 __pycache__/*
 goal_set.txt
 output.txt
+optimathsat*/*
 
 # Created by https://www.gitignore.io/api/macos,pycharm
 # Edit at https://www.gitignore.io/?templates=macos,pycharm
