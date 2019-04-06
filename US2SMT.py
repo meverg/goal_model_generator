@@ -1,10 +1,15 @@
 import random
 import IO
 import os
+from subprocess import call
 
 
 def get_oms_out():
   return os.popen('./optimathsat/bin/optimathsat < output.txt').read()
+
+def get_graph():
+  return os.popen('dot graph.dot -Tpng -o graph.jpg')
+
 
 
 def contains(the_list, custom_filter):
@@ -27,6 +32,7 @@ class US2SMT:
     self.refinements = []
 
     self.smt = ''
+    self.graph = ''
     self.goal_set = ''
 
   class Refinement:
@@ -96,6 +102,7 @@ class US2SMT:
     refinements = self.refinements
 
     smt = self.smt
+    graph = self.graph
     goal_set = self.goal_set
 
     for idx, us in enumerate(clean_input):
@@ -112,7 +119,7 @@ class US2SMT:
     for u in user_stories:
       if contains(goals, lambda g: g.name == u.role):
         new_goal = self.Goal(goal_id)
-        goal_set += 'G' + str(goal_id) + ' : ' + u.content + '\r\n'
+        goal_set += 'G' + str(goal_id) + ' : ' + u.action + '\r\n'
         goal_id += 1
         new_goal.set_leaf()
         for p in u.pWeight:
@@ -139,7 +146,7 @@ class US2SMT:
         new_ref.parent = new_goal.id_
         new_goal.children.append(new_ref)
         new_goal = self.Goal(goal_id)
-        goal_set += 'G' + str(goal_id) + ' : ' + u.content + '\r\n'
+        goal_set += 'G' + str(goal_id) + ' : ' + u.action + '\r\n'
         goal_id += 1
         new_goal.set_leaf()
         for p in u.pWeight:
@@ -152,6 +159,8 @@ class US2SMT:
         refinements.append(new_ref)
 
     smt += '(set-option :produce-models true)\r\n(set-option :opt.priority lex)\r\n\r\n'
+    graph += 'digraph G {\r\n'
+
 
     for g in goals:
       smt += '(declare-fun ' + g.id_ + ' () Bool) \r\n'
@@ -165,6 +174,8 @@ class US2SMT:
       if not g.isLeaf:
         smt += '(assert (=> ' + g.id_ + '(or '
         for c in g.children:
+          graph += '\t' + g.id_ + ' -> ' + c.id_ + ';\r\n'
+          graph += c.id_ + ' [shape=circle,style=filled,color=black,label=""];'
           smt += c.id_ + ' '
         smt += ')))\r\n'
 
@@ -172,6 +183,7 @@ class US2SMT:
       smt += '(assert (and (= ' + r.id_ + ' (and '
       for c in r.children:
         smt += c.id_ + ' '
+        graph += '\t' + r.id_ + ' -> ' + c.id_ + ';\r\n'
       smt += ')) (=> ' + r.id_ + ' ' + r.parent + ' )))\r\n'
 
     for g in goals:
@@ -187,13 +199,17 @@ class US2SMT:
     for n in user_stories[0].nWeight:
       smt += '(minimize ' + n[0] + ')\r\n'
 
-    smt += '(minimize unsat_requirements)\r\n(minimize sat_tasks)\r\n(check-sat)\r\n(get-objectives)\r\n(' \
-           'load-objective-model 1)\r\n(get-model)\r\n(exit) '
+    smt += '(minimize unsat_requirements)\r\n(minimize sat_tasks)\r\n(check-sat)\r\n'
+    smt += '(get-objectives)\r\n(load-objective-model 1)\r\n(get-model)\r\n(exit)'
+    graph += '}'
 
     f = open("output.txt", "w")
     f.write(smt)
 
     f2 = open("goal_set.txt", "w")
     f2.write(goal_set)
+
+    f3 = open("graph.dot", "w")
+    f3.write(graph)
 
     return smt, goal_set

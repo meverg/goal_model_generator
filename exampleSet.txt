@@ -1,0 +1,7 @@
+As a Publisher, I want to publish a dataset, so that I can view just the dataset with a few people.
+As a Publisher, I want to publish a dataset, so that I can share the dataset publicly with everyone.
+As a Publisher, I want to preview a data package I have prepared, so that that I can check it works and share the results.
+As a Publisher, I want to tag data package to create a snapshot of data on the registry server, so that that consumers can refer to it.
+As an owner, I want to make a user an owner, so that they have full control.
+As a Data Analyst, I want to compare different versions of some data package locally, so that that I can see schema changes clearly and adjust my analytics code to the desired schema version.
+As a Data Analyst I want to download a data package, so that that I can study it and wrangle with it to infer new data or generate new insights.
