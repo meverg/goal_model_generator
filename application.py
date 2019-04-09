@@ -14,10 +14,22 @@ def index():
 @app.route('/solve_us', methods=['POST'])
 def solve_us():
   converter = US2SMT.US2SMT(request.files['us_file'], parser)
-  smt = converter.get_smt_input()
+  smt, dot, dictn = converter.get_smt_input()
   oms_out = US2SMT.get_oms_out()
-  graph = US2SMT.get_graph()
-  return render_template('result.html', smt=smt, oms_out=oms_out, graph=graph)
+
+  for line in oms_out.splitlines():
+    if line.strip():
+      line = line.replace("(", " ")
+      line = line.lstrip()
+      word = line.split()
+      if word[0] in dictn:
+          if word[1] == "true)":
+              dot.node(word[0], color="chartreuse")
+          else:
+              dot.node(word[0], color="red")
+
+  dot.render(view=True)
+  return render_template('index.html')
 
 
 if __name__ == '__main__':

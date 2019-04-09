@@ -1,6 +1,9 @@
 <html>
 <body>
 <h1 align="center">Release Model Generator from User Stories</h1>
+<p align="center">Upload your user story set in .txt format.</p>
+<p align="center">It should contain one proper user story in each line.</p>
+<p align="center">Then send it to get your optimal model.</p>
 <form align="center "action="{{ url_for('solve_us') }}" method="POST"
       enctype="multipart/form-data">
     <input type="file" name="us_file"/><br>
