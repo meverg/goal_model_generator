@@ -1,16 +1,13 @@
 import random
 import IO
 import os
-from subprocess import call
-
 
 def get_oms_out():
   return os.popen('./optimathsat/bin/optimathsat < output.txt').read()
 
 def get_graph():
+  
   return os.popen('dot graph.dot -Tpng -o graph.jpg')
-
-
 
 def contains(the_list, custom_filter):
   for x in the_list:
@@ -33,7 +30,7 @@ class US2SMT:
 
     self.smt = ''
     self.graph = ''
-    self.goal_set = ''
+    self.dict = {}
 
   class Refinement:
     def __init__(self, id_):
@@ -103,13 +100,13 @@ class US2SMT:
 
     smt = self.smt
     graph = self.graph
-    goal_set = self.goal_set
+    dict = self.dict
 
     for idx, us in enumerate(clean_input):
       tmp_us = self.UserStory(idx)
       tmp_us.content = us
-      tmp_us.role = self.parser.get_role_of(self.parser.nlp(us))
-      tmp_us.action = self.parser.get_action_of(self.parser.nlp(us))
+      tmp_us.role = self.parser.get_role_of(self.parser.nlp(us)).replace(" ", "_")
+      tmp_us.action = self.parser.get_action_of(self.parser.nlp(us)).replace(" ", "_")
       tmp_us.pWeight.append(('gain', random.randint(0, 20)))
       tmp_us.pWeight.append(('attr', random.randint(0, 10)))
       tmp_us.nWeight.append(('effort', random.randint(0, 5)))
@@ -119,7 +116,7 @@ class US2SMT:
     for u in user_stories:
       if contains(goals, lambda g: g.name == u.role):
         new_goal = self.Goal(goal_id)
-        goal_set += 'G' + str(goal_id) + ' : ' + u.action + '\r\n'
+        dict['G' + str(goal_id)] = u.action
         goal_id += 1
         new_goal.set_leaf()
         for p in u.pWeight:
@@ -136,6 +133,7 @@ class US2SMT:
         refinements.append(new_ref)
       else:
         new_goal = self.Goal(goal_id)
+        dict['G' + str(goal_id)] = u.role
         goal_id += 1
         new_goal.set_root()
         new_goal.set_mandatory()
@@ -146,7 +144,7 @@ class US2SMT:
         new_ref.parent = new_goal.id_
         new_goal.children.append(new_ref)
         new_goal = self.Goal(goal_id)
-        goal_set += 'G' + str(goal_id) + ' : ' + u.action + '\r\n'
+        dict['G' + str(goal_id)] = u.action
         goal_id += 1
         new_goal.set_leaf()
         for p in u.pWeight:
@@ -174,7 +172,7 @@ class US2SMT:
       if not g.isLeaf:
         smt += '(assert (=> ' + g.id_ + '(or '
         for c in g.children:
-          graph += '\t' + g.id_ + ' -> ' + c.id_ + ';\r\n'
+          graph += '\t' + dict[g.id_] + ' -> ' + c.id_ + ';\r\n'
           graph += c.id_ + ' [shape=circle,style=filled,color=black,label=""];'
           smt += c.id_ + ' '
         smt += ')))\r\n'
@@ -183,7 +181,7 @@ class US2SMT:
       smt += '(assert (and (= ' + r.id_ + ' (and '
       for c in r.children:
         smt += c.id_ + ' '
-        graph += '\t' + r.id_ + ' -> ' + c.id_ + ';\r\n'
+        graph += '\t' + r.id_ + ' -> ' + dict[c.id_] + ';\r\n'
       smt += ')) (=> ' + r.id_ + ' ' + r.parent + ' )))\r\n'
 
     for g in goals:
@@ -201,15 +199,18 @@ class US2SMT:
 
     smt += '(minimize unsat_requirements)\r\n(minimize sat_tasks)\r\n(check-sat)\r\n'
     smt += '(get-objectives)\r\n(load-objective-model 1)\r\n(get-model)\r\n(exit)'
-    graph += '}'
 
     f = open("output.txt", "w")
     f.write(smt)
 
-    f2 = open("goal_set.txt", "w")
-    f2.write(goal_set)
+
+    #çalışıyo mu diye bakmak için txtye yazdırmaya çalışıyorum burda sadece :D
+    f2 = open("ooouttt.txt", "w")
+    f2.write(get_oms_out())
+
+    graph += '}'
 
     f3 = open("graph.dot", "w")
     f3.write(graph)
 
-    return smt, goal_set
+    return smt

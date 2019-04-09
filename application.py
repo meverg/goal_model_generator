@@ -14,9 +14,10 @@ def index():
 @app.route('/solve_us', methods=['POST'])
 def solve_us():
   converter = US2SMT.US2SMT(request.files['us_file'], parser)
-  smt, goal_set = converter.get_smt_input()
+  smt = converter.get_smt_input()
   oms_out = US2SMT.get_oms_out()
-  return render_template('result.html', smt=smt, goal_set=goal_set, oms_out=oms_out)
+  graph = US2SMT.get_graph()
+  return render_template('result.html', smt=smt, oms_out=oms_out, graph=graph)
 
 
 if __name__ == '__main__':
