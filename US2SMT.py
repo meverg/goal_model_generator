@@ -16,8 +16,9 @@ def contains(the_list, custom_filter):
 
 class US2SMT:
 
-  def __init__(self, in_file, parser):
+  def __init__(self, in_file, parser, opt):
     self.parser = parser
+    self.opt = opt
     self.in_file = in_file
     self.refinement_id = 0
     self.goal_id = 0
@@ -138,7 +139,14 @@ class US2SMT:
         new_ref.children.append(new_goal)
         refinements.append(new_ref)
 
-    smt += '(set-option :produce-models true)\r\n(set-option :opt.priority lex)\r\n\r\n'
+    smt += '(set-option :produce-models true)\r\n'
+
+    if self.opt == 1:
+      smt+= '(set-option :opt.priority box)\r\n\r\n'
+    elif self.opt == 2:
+      smt+= '(set-option :opt.priority lex)\r\n\r\n'
+    else:
+      smt+= '(set-option :opt.priority pareto)\r\n\r\n'
 
     for g in goals:
       smt += '(declare-fun ' + g.id_ + ' () Bool) \r\n'
@@ -152,7 +160,7 @@ class US2SMT:
       if not g.isLeaf:
         smt += '(assert (=> ' + g.id_ + '(or '
         for c in g.children:
-          dot.edge(g.id_,c.id_)
+          dot.edge(g.id_,c.id_, dir='back')
           smt += c.id_ + ' '
         smt += ')))\r\n'
 
@@ -160,7 +168,7 @@ class US2SMT:
       smt += '(assert (and (= ' + r.id_ + ' (and '
       for c in r.children:
         smt += c.id_ + ' '
-        dot.edge(r.id_, c.id_)
+        dot.edge(r.id_,c.id_, dir='back')
       smt += ')) (=> ' + r.id_ + ' ' + r.parent + ' )))\r\n'
 
     for g in goals:

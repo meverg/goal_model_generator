@@ -13,7 +13,7 @@ def index():
 
 @app.route('/solve_us', methods=['POST'])
 def solve_us():
-  converter = US2SMT.US2SMT(request.files['us_file'], parser)
+  converter = US2SMT.US2SMT(request.files['us_file'], parser, request.form.get('opt'))
   smt, dot, dictn = converter.get_smt_input()
   oms_out = US2SMT.get_oms_out()
 
@@ -24,9 +24,9 @@ def solve_us():
       word = line.split()
       if word[0] in dictn:
           if word[1] == "true)":
-              dot.node(word[0], color="chartreuse")
+              dot.node(word[0], color="limegreen", fillcolor = "palegreen1",style='filled')
           else:
-              dot.node(word[0], color="red")
+              dot.node(word[0], color="red3", fillcolor = "red",style='filled')
 
   dot.render(view=True)
   return render_template('index.html')

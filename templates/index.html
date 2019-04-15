@@ -4,9 +4,13 @@
 <p align="center">Upload your user story set in .txt format.</p>
 <p align="center">It should contain one proper user story in each line.</p>
 <p align="center">Then send it to get your optimal model.</p>
-<form align="center "action="{{ url_for('solve_us') }}" method="POST"
-      enctype="multipart/form-data">
+<form align="center "action="{{ url_for('solve_us') }}" method="POST" enctype="multipart/form-data">
     <input type="file" name="us_file"/><br>
+    <select id="opt" name="opt">
+        <option value="1">box</option>
+        <option value="2" selected="true">lex</option>
+        <option value="3">pareto</option>
+    </select><br>
     <input type="submit"/>
 </form>
 </body>
