@@ -1,11 +1,11 @@
 import random
 import IO
 import os
-
+from graphviz import Digraph
 
 def get_oms_out():
-  return os.popen('./optimathsat/bin/optimathsat < output.txt').read()
 
+  return os.popen('./optimathsat/bin/optimathsat < output.txt').read()
 
 def contains(the_list, custom_filter):
   for x in the_list:
@@ -16,8 +16,9 @@ def contains(the_list, custom_filter):
 
 class US2SMT:
 
-  def __init__(self, in_file, parser):
+  def __init__(self, in_file, parser, opt):
     self.parser = parser
+    self.opt = opt
     self.in_file = in_file
     self.refinement_id = 0
     self.goal_id = 0
@@ -27,7 +28,8 @@ class US2SMT:
     self.refinements = []
 
     self.smt = ''
-    self.goal_set = ''
+    self.dot = Digraph()
+    self.dictn = {}
 
   class Refinement:
     def __init__(self, id_):
@@ -65,27 +67,6 @@ class US2SMT:
       self.nWeight = []
       self.content = None
 
-  # a = UserStory(1)
-  # b = UserStory(2)
-  # c = UserStory(3)
-  #
-  # a.role = 'publisher'
-  # a.action = 'sign up'
-  # a.pWeight.append(('pos', 3))
-  # a.nWeight.append(('eff', 2))
-  # b.role = 'publisher'
-  # b.action = 'publish'
-  # b.pWeight.append(('pos', 10))
-  # b.nWeight.append(('eff', 1))
-  # c.role = 'admin'
-  # c.action = 'create profile'
-  # c.pWeight.append(('pos', 4))
-  # c.nWeight.append(('eff', 2))
-
-  # user_stories.append(a)
-  # user_stories.append(b)
-  # user_stories.append(c)
-
   def get_smt_input(self):
     clean_input = IO.get_input(self.in_file)
     refinement_id = self.refinement_id
@@ -96,7 +77,8 @@ class US2SMT:
     refinements = self.refinements
 
     smt = self.smt
-    goal_set = self.goal_set
+    dot = self.dot
+    dictn = self.dictn
 
     for idx, us in enumerate(clean_input):
       tmp_us = self.UserStory(idx)
@@ -112,7 +94,8 @@ class US2SMT:
     for u in user_stories:
       if contains(goals, lambda g: g.name == u.role):
         new_goal = self.Goal(goal_id)
-        goal_set += 'G' + str(goal_id) + ' : ' + u.content + '\r\n'
+        dictn['G' + str(goal_id)] = u.action
+        dot.node(new_goal.id_, u.action)
         goal_id += 1
         new_goal.set_leaf()
         for p in u.pWeight:
@@ -122,6 +105,7 @@ class US2SMT:
         new_goal.name = u.action
         goals.append(new_goal)
         new_ref = self.Refinement(refinement_id)
+        dot.node(new_ref.id_, shape='point')
         refinement_id += 1
         new_ref.children.append(new_goal)
         new_ref.parent = list(filter(lambda g: g.name == u.role, goals))[0].id_
@@ -129,17 +113,21 @@ class US2SMT:
         refinements.append(new_ref)
       else:
         new_goal = self.Goal(goal_id)
+        dictn['G' + str(goal_id)] = u.role
+        dot.node(new_goal.id_, u.role)
         goal_id += 1
         new_goal.set_root()
         new_goal.set_mandatory()
         new_goal.name = u.role
         goals.append(new_goal)
         new_ref = self.Refinement(refinement_id)
+        dot.node(new_ref.id_, shape='point')
         refinement_id += 1
         new_ref.parent = new_goal.id_
         new_goal.children.append(new_ref)
         new_goal = self.Goal(goal_id)
-        goal_set += 'G' + str(goal_id) + ' : ' + u.content + '\r\n'
+        dictn['G' + str(goal_id)] = u.action
+        dot.node(new_goal.id_, u.action)
         goal_id += 1
         new_goal.set_leaf()
         for p in u.pWeight:
@@ -151,7 +139,14 @@ class US2SMT:
         new_ref.children.append(new_goal)
         refinements.append(new_ref)
 
-    smt += '(set-option :produce-models true)\r\n(set-option :opt.priority lex)\r\n\r\n'
+    smt += '(set-option :produce-models true)\r\n'
+
+    if self.opt == 1:
+      smt+= '(set-option :opt.priority box)\r\n\r\n'
+    elif self.opt == 2:
+      smt+= '(set-option :opt.priority lex)\r\n\r\n'
+    else:
+      smt+= '(set-option :opt.priority pareto)\r\n\r\n'
 
     for g in goals:
       smt += '(declare-fun ' + g.id_ + ' () Bool) \r\n'
@@ -165,6 +160,7 @@ class US2SMT:
       if not g.isLeaf:
         smt += '(assert (=> ' + g.id_ + '(or '
         for c in g.children:
+          dot.edge(g.id_,c.id_, dir='back')
           smt += c.id_ + ' '
         smt += ')))\r\n'
 
@@ -172,6 +168,7 @@ class US2SMT:
       smt += '(assert (and (= ' + r.id_ + ' (and '
       for c in r.children:
         smt += c.id_ + ' '
+        dot.edge(r.id_,c.id_, dir='back')
       smt += ')) (=> ' + r.id_ + ' ' + r.parent + ' )))\r\n'
 
     for g in goals:
@@ -187,13 +184,10 @@ class US2SMT:
     for n in user_stories[0].nWeight:
       smt += '(minimize ' + n[0] + ')\r\n'
 
-    smt += '(minimize unsat_requirements)\r\n(minimize sat_tasks)\r\n(check-sat)\r\n(get-objectives)\r\n(' \
-           'load-objective-model 1)\r\n(get-model)\r\n(exit) '
+    smt += '(minimize unsat_requirements)\r\n(minimize sat_tasks)\r\n(check-sat)\r\n'
+    smt += '(get-objectives)\r\n(load-objective-model 1)\r\n(get-model)\r\n(exit)'
 
     f = open("output.txt", "w")
     f.write(smt)
 
-    f2 = open("goal_set.txt", "w")
-    f2.write(goal_set)
-
-    return smt, goal_set
+    return smt, dot, dictn
