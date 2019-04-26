@@ -19,7 +19,9 @@ def index():
 
 @app.route('/solve_us', methods=['POST'])
 def solve_us():
-  converter = US2SMT.US2SMT(request.files['us_file'], parser, request.form.get('opt'))
+  converter = US2SMT.US2SMT(request.files['us_file'], parser, request.form.get('opt'), request.form.get('opt2'))
+  print(request.form.get('opt'))
+  print(request.form.get('opt2'))
   smt, dot, dictn = converter.get_smt_input()
   oms_out = US2SMT.get_oms_out()
 
