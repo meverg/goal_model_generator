@@ -5,3 +5,11 @@ As a Publisher, I want to tag data package to create a snapshot of data on the r
 As an owner, I want to make a user an owner, so that they have full control.
 As a Data Analyst, I want to compare different versions of some data package locally, so that that I can see schema changes clearly and adjust my analytics code to the desired schema version.
 As a Data Analyst I want to download a data package, so that that I can study it and wrangle with it to infer new data or generate new insights.
+As a Data Analyst, I want to update previously downloaded data package, so that that I can work with the most recent data.
+As an Owner, I want to edit my profile, so that that it is updated with new information.
+As an Owner, I want to invite an existing user, so that the user can become a member of my publisher.
+As an owner, I want to invite someone using their email to sign up and become a member of my Publisher, so that that they are authorized to publish data packages under my Publisher.
+As an owner, I want to remove someone from membership in my publisher, so that they no longer have ability to publish or modify my data packages.
+As an owner, I want to view all the people in my organization and what roles they have, so that that I can change these if I want.
+As an owner, I want to make a user an owner, so that they have full control.
+As an owner, I want to remove a user as an owner, so that they are just a member and no longer have full control.
