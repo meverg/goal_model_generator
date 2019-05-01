@@ -12,6 +12,7 @@ flask = "*"
 en-core-web-md = {file = "https://github.com/explosion/spacy-models/releases/download/en_core_web_md-2.1.0/en_core_web_md-2.1.0.tar.gz"}
 python-dotenv = "*"
 graphviz = "*"
+sklearn = "*"
 
 [requires]
 python_version = "3.7"

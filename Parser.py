@@ -1,19 +1,53 @@
+import pandas as pd
 import re
-import en_core_web_md
+from spacy.lang.en.stop_words import STOP_WORDS
+from string import punctuation
+from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
+from sklearn.decomposition import NMF, LatentDirichletAllocation, TruncatedSVD
+
+
+def cleaning(row):
+  return re.sub("[^A-Za-z']+", ' ', str(row)).lower()
+
+
+def sort_topics(topic_probs):
+  all_topics = [d.argmax() for d in topic_probs]
+  return sorted(set(all_topics), key=all_topics.count, reverse=True)
+
 
 class Parser:
 
-  def __init__(self):
-    self.nlp = en_core_web_md.load()
-    print('model loaded')
+  def __init__(self, nlp, model_selection='LDA', vectorizer_selection='COUNT'):
+    self.vectorizer_selection = vectorizer_selection  # COUNT or TFIDF
+    self.model_selection = model_selection  # LDA or NNMF or LSI
+    self.nlp = nlp
+    self.punctuations = punctuation
+    self.stopwords = list(STOP_WORDS)
+    self.data_vectorized = None
+    self.vectorizer = None
+    self.df = None
+    self.model = None
+    self.modeled_data = None
+    self.topic_kw_dict = {}
 
-  def cleaning(self, row):
-    return re.sub("[^A-Za-z']+", ' ', str(row)).lower()
+  def get_input(self, inf):
+    self.df = pd.read_csv(inf, sep="\n", header=None, names=['original'])
+    self.df['clean'] = self.df['original'].apply(cleaning)
+    self.df['doc'] = self.df['clean'].apply(self.nlp)
+    self.df['role'] = self.df['doc'].apply(self.get_role_of)
+    self.df['act'] = self.df['doc'].apply(self.get_action_of)
+    self.df['act_tokenized'] = self.df['act'].apply(self.spacy_tokenizer)
+    self.vectorize()
+    self.extract_topics()
+    self.df['topic_id'] = [self.modeled_data[i].argmax() for i in range(self.modeled_data.shape[0])]
+    self.build_topic_kw_dict()
+    self.df['topic_kw_list'] = self.df['topic_id'].apply(self.topic_kw_dict.get)
+    return self.df
 
   # noinspection SpellCheckingInspection
-  def lemmatize(self, row):
-    row = self.nlp(row)
-    return [token.lemma_ for token in row if not token.is_stop]
+  # def lemmatize(self, row):
+  #   row = self.nlp(row)
+  #   return [token.lemma_ for token in row if not token.is_stop]
 
   def phrase_traversal(self, t_node, p_list, filter_args=[]):
     if (t_node is None) or t_node.dep_ in filter_args:
@@ -64,3 +98,47 @@ class Parser:
     except Exception as E:
       print("Couldn't get role of:\n {}\n {}".format(doc, E))
       return None
+
+  def spacy_tokenizer(self, sentence):
+    if sentence is None:
+      return None
+    my_tokens = self.nlp(sentence)
+    my_tokens = [word.lemma_.lower().strip() if word.lemma_ != "-PRON-" else word.lower_ for word in my_tokens]
+    my_tokens = [word for word in my_tokens if word not in self.stopwords and word not in self.punctuations]
+    my_tokens = " ".join([i for i in my_tokens])
+    return my_tokens
+
+  def vectorize(self):
+    if self.vectorizer_selection == 'COUNT':
+      self.vectorizer = CountVectorizer(min_df=2, max_df=0.95, stop_words='english')
+    elif self.vectorizer_selection == 'TFIDF':
+      self.vectorizer = TfidfVectorizer(min_df=2, max_df=0.95, stop_words='english')
+    else:
+      raise ValueError('wrong vectorizer selection')
+    self.data_vectorized = self.vectorizer.fit_transform(self.df['act_tokenized'])
+
+  def extract_topics(self):
+    num_topics = len(self.df['act_tokenized'])
+    if self.model_selection == 'LDA':
+      self.model = LatentDirichletAllocation(n_components=num_topics, learning_method='online')
+    elif self.model_selection == 'NNMF':
+      self.model = NMF(n_components=num_topics)
+    elif self.model_selection == 'LSI':
+      self.model = TruncatedSVD(n_components=min(num_topics, len(self.vectorizer.get_feature_names()) - 1))
+    else:
+      raise ValueError('wrong model selection')
+
+    self.modeled_data = self.model.fit_transform(self.data_vectorized)
+
+  def top_n_kw_of_topic(self, topic_id, top_n=2):
+    topic = self.model.components_[topic_id]
+    return [self.vectorizer.get_feature_names()[i] for i in topic.argsort()[:-top_n - 1:-1]]
+
+  def build_topic_kw_dict(self):
+    used_kws = []
+    topic_kw_dict = {}
+    for topic_id in sort_topics(self.modeled_data):
+      tmp_kws = [kw for kw in (self.top_n_kw_of_topic(topic_id)) if kw not in used_kws]
+      topic_kw_dict[topic_id] = tmp_kws
+      used_kws.extend(tmp_kws)
+    self.topic_kw_dict = topic_kw_dict

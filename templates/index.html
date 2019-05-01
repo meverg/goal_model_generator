@@ -5,7 +5,7 @@
 <p align="center">It should contain one proper user story in each line.</p>
 <p align="center">Then send it to get your optimal model.</p>
 <form align="left "action="{{ url_for('solve_us') }}" method="POST" enctype="multipart/form-data">
-    <input type="file" name="us_file"/><br>
+    <input type="file" name="us_file" required/><br>
     <select id="opt" name="opt">
         <option value="1">box</option>
         <option value="2" selected="true">lex</option>
@@ -16,6 +16,15 @@
         <option value="2" selected="true">2-layered (topic)</option>
         <option value="3">3-layered</option>
     </select><br>
+    <select id="model_selection" name="model_selection">
+        <option value="LDA" selected="selected">LDA</option>
+        <option value="NNMF">NNMF</option>
+        <option value="LSI">LSI</option>
+    </select>
+    <select id="vectorizer_selection" name="vectorizer_selection">
+        <option value="COUNT" selected="selected">Count</option>
+        <option value="TFIDF">TF-IDF</option>
+    </select>
     <input type="submit"/>
 </form>
 </body>
