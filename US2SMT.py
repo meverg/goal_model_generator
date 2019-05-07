@@ -15,14 +15,14 @@ def contains(the_list, custom_filter):
 
 
 class US2SMT:
-
-  def __init__(self, in_file, parser, opt, opt2):
+  def __init__(self, in_file, parser, opt, opt2, max_):
     self.parser = parser
     self.opt = opt
     self.opt2 = opt2
     self.in_file = in_file
     self.refinement_id = 0
     self.goal_id = 0
+    self.max_ = max_
 
     self.user_stories = []
     self.goals = []
@@ -66,9 +66,13 @@ class US2SMT:
       self.reason = None
       self.topic = None
       self.topic_id = None
+      self.weight = []
       self.pWeight = []
       self.nWeight = []
       self.content = None
+      self.weight.append(('gain', random.randint(0, 20)))
+      self.weight.append(('attr', random.randint(0, 10)))
+      self.weight.append(('effort', random.randint(0, 5)))
 
   def get_relations(self, type, level):
     if level == 2:
@@ -234,11 +238,18 @@ class US2SMT:
         self.refinements.append(new_ref)
     return dot, dictn
 
-  def get_smt_input(self):
+  def weight(self):
+    ws = self.max_.split(',')
+    for s in self.user_stories:
+      for w in s.weight:
+        if contains(ws, lambda ws: ws == w[0]):
+          s.pWeight.append(w)
+        else:
+          s.nWeight.append(w)
+    return self
+
+  def add_us(self):
     processed_df = self.parser.get_input(self.in_file)
-
-    smt = self.smt
-
     for idx, us in processed_df.iterrows():
       tmp_us = self.UserStory(idx)
       tmp_us.content = us['original']
@@ -246,12 +257,12 @@ class US2SMT:
       tmp_us.action = us['act']
       tmp_us.topic_id = us['topic_id']
       tmp_us.topic = ', '.join(us['topic_kw_list'])
-      tmp_us.pWeight.append(('gain', random.randint(0, 20)))
-      tmp_us.pWeight.append(('attr', random.randint(0, 10)))
-      tmp_us.nWeight.append(('effort', random.randint(0, 5)))
       if tmp_us.action is not None and tmp_us.role is not None:
         self.user_stories.append(tmp_us)
+    return self
 
+  def get_smt_input(self): 
+    smt = self.smt 
     if self.opt2 == '1':
       dot, dictn = self.get_relations(1, 2)
     elif self.opt2 == '2':

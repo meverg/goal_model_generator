@@ -27,7 +27,9 @@ def solve_us():
                             Parser.Parser(nlp,
                                           model_selection=request.form.get('model_selection'),
                                           vectorizer_selection=request.form.get('vectorizer_selection')),
-                            request.form.get('opt'), request.form.get('opt2'))
+                            request.form.get('opt'), request.form.get('opt2'), request.form.get('max'))
+  converter = converter.add_us()
+  converter = converter.weight()
   smt, dot, dictn = converter.get_smt_input()
   oms_out = US2SMT.get_oms_out()
 
