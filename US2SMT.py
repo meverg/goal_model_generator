@@ -310,8 +310,10 @@ class US2SMT:
         for n in g.nWeight:
           smt += '(assert-soft ' + g.id_ + ' :weight ' + str(n[1]) + ' :id ' + n[0] + ')\r\n'
 
+    ws = self.max_.split(',')
     for w in self.user_stories[0].weight:
-      if contains(self.max_, lambda m: m == w[0]):
+
+      if contains(ws, lambda m: m == w[0]):
         smt += '(maximize ' + w[0] + ')\r\n'
       else:
         smt += '(minimize ' + w[0] + ')\r\n'
