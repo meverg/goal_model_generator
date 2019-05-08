@@ -287,14 +287,16 @@ class US2SMT:
     for r in self.refinements:
       smt += '(declare-fun ' + r.id_ + ' () Bool) \r\n'
 
+    #or
     for g in self.goals:
       if not g.isLeaf:
         smt += '(assert (=> ' + g.id_ + '(or '
-      for c in g.children:
-        dot.edge(g.id_, c.id_, dir='back')
-        smt += c.id_ + ' '
-      smt += ')))\r\n'
+        for c in g.children:
+          dot.edge(g.id_, c.id_, dir='back')
+          smt += c.id_ + ' '
+        smt += ')))\r\n'
 
+    #and
     for r in self.refinements:
       smt += '(assert (and (= ' + r.id_ + ' (and '
       for c in r.children:
