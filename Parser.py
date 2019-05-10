@@ -35,7 +35,7 @@ class Parser:
     self.df['clean'] = self.df['User Story'].apply(cleaning)
     self.df['doc'] = self.df['clean'].apply(self.nlp)
     self.df['role'] = self.df['doc'].apply(self.get_role_of)
-    self.df['act'] = self.df['doc'].apply(self.get_action_of)
+    self.df['act'] = self.df['doc'].apply(self.get_action_of).apply(lambda x: x.lstrip('to '))
     self.df['act_tokenized'] = self.df['act'].apply(self.spacy_tokenizer)
     self.vectorize()
     self.extract_topics()
