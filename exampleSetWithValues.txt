@@ -1,0 +1,16 @@
+User Story,effort,gain,attr
+"As a Publisher, I want to publish a dataset, so that I can view just the dataset with a few people.",4,16,7
+"As a Publisher, I want to publish a dataset, so that I can share the dataset publicly with everyone.",3,13,8
+"As a Publisher, I want to preview a data package I have prepared, so that that I can check it works and share the results.",4,8,9
+"As a Publisher, I want to tag data package to create a snapshot of data on the registry server, so that that consumers can refer to it.",1,3,7
+"As an owner, I want to make a user an owner, so that they have full control.",5,19,1
+"As a Data Analyst, I want to compare different versions of some data package locally, so that that I can see schema changes clearly and adjust my analytics code to the desired schema version.",2,13,3
+"As a Data Analyst I want to download a data package, so that that I can study it and wrangle with it to infer new data or generate new insights.",2,7,2
+"As a Data Analyst, I want to update previously downloaded data package, so that that I can work with the most recent data.",5,16,6
+"As an Owner, I want to edit my profile, so that that it is updated with new information.",2,14,7
+"As an Owner, I want to invite an existing user, so that the user can become a member of my publisher.",3,8,3
+"As an owner, I want to invite someone using their email to sign up and become a member of my Publisher, so that that they are authorized to publish data packages under my Publisher.",1,5,8
+"As an owner, I want to remove someone from membership in my publisher, so that they no longer have ability to publish or modify my data packages.",2,16,8
+"As an owner, I want to view all the people in my organization and what roles they have, so that that I can change these if I want.",4,12,7
+"As an owner, I want to make a user an owner, so that they have full control.",5,8,8
+"As an owner, I want to remove a user as an owner, so that they are just a member and no longer have full control.",1,9,10
