@@ -31,8 +31,8 @@ class Parser:
     self.topic_kw_dict = {}
 
   def get_input(self, inf):
-    self.df = pd.read_csv(inf, sep="\n", header=None, names=['original'])
-    self.df['clean'] = self.df['original'].apply(cleaning)
+    self.df = pd.read_csv(inf)
+    self.df['clean'] = self.df['User Story'].apply(cleaning)
     self.df['doc'] = self.df['clean'].apply(self.nlp)
     self.df['role'] = self.df['doc'].apply(self.get_role_of)
     self.df['act'] = self.df['doc'].apply(self.get_action_of)

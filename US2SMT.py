@@ -1,4 +1,3 @@
-import random
 import os
 from graphviz import Digraph
 
@@ -70,9 +69,6 @@ class US2SMT:
       self.pWeight = []
       self.nWeight = []
       self.content = None
-      self.weight.append(('gain', random.randint(0, 20)))
-      self.weight.append(('attr', random.randint(0, 10)))
-      self.weight.append(('effort', random.randint(0, 5)))
 
   def get_relations(self, type, level):
     if level == 2:
@@ -250,19 +246,22 @@ class US2SMT:
 
   def add_us(self):
     processed_df = self.parser.get_input(self.in_file)
+    known_cols = ['clean', 'doc', 'act', 'act_tokenized', 'User Story']
+    weight_cols = [col for col in processed_df.columns if col not in known_cols]
     for idx, us in processed_df.iterrows():
       tmp_us = self.UserStory(idx)
-      tmp_us.content = us['original']
+      tmp_us.content = us['User Story']
       tmp_us.role = us['role']
       tmp_us.action = us['act']
       tmp_us.topic_id = us['topic_id']
       tmp_us.topic = ', '.join(us['topic_kw_list'])
+      tmp_us.weight = [(col, us[col]) for col in weight_cols]
       if tmp_us.action is not None and tmp_us.role is not None:
         self.user_stories.append(tmp_us)
     return self
 
-  def get_smt_input(self): 
-    smt = self.smt 
+  def get_smt_input(self):
+    smt = self.smt
     if self.opt2 == '1':
       dot, dictn = self.get_relations(1, 2)
     elif self.opt2 == '2':
@@ -287,7 +286,7 @@ class US2SMT:
     for r in self.refinements:
       smt += '(declare-fun ' + r.id_ + ' () Bool) \r\n'
 
-    #or
+    # or
     for g in self.goals:
       if not g.isLeaf:
         smt += '(assert (=> ' + g.id_ + '(or '
@@ -296,7 +295,7 @@ class US2SMT:
           smt += c.id_ + ' '
         smt += ')))\r\n'
 
-    #and
+    # and
     for r in self.refinements:
       smt += '(assert (and (= ' + r.id_ + ' (and '
       for c in r.children:
