@@ -37,8 +37,8 @@ docker-machine create --driver amazonec2 --amazonec2-instance-type "t2.small"  -
 
 ## Authors
 
-* **Emin Vergili**
-* **Didem Öngü**
+* [**Emin Vergili**](https://github.com/meverg)
+* [**Didem Öngü**](https://tr.linkedin.com/in/didem-%C3%B6ng%C3%BC-a29918178)
 
 ## License
 
@@ -46,4 +46,9 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 
 ## Acknowledgments
 
-We would like to express our very great appreciation to [Ms. Aydemir](https://www.cmpe.boun.edu.tr/people/basak.aydemir) for her valuable and constructive suggestions during the planning and development of this research work. Her willingness to give her time so generously has been very much appreciated.
+We would like to express our very great appreciation to [Dr. Aydemir](https://www.cmpe.boun.edu.tr/people/basak.aydemir) for her valuable and constructive suggestions during the planning and development of this research work. Her willingness to give her time so generously has been very much appreciated.
+
+## Notes
+
+You can find more [example user stories](docs/UserStories) included in the repo. Thanks to [Dalpiaz, Fabiano (2018), “Requirements data sets (user stories)”, Mendeley Data, v1](http://dx.doi.org/10.17632/7zbk8zsd8y.1
+)

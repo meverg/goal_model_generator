@@ -31,12 +31,14 @@ class Parser:
     self.topic_kw_dict = {}
 
   def get_input(self, inf):
-    self.df = pd.read_csv(inf, sep="\n", header=None, names=['original'])
-    self.df['clean'] = self.df['original'].apply(cleaning)
+    self.df = pd.read_csv(inf)
+    self.df['clean'] = self.df['User Story'].apply(cleaning)
     self.df['doc'] = self.df['clean'].apply(self.nlp)
     self.df['role'] = self.df['doc'].apply(self.get_role_of)
-    self.df['act'] = self.df['doc'].apply(self.get_action_of)
+    self.df['act'] = self.df['doc'].apply(self.get_action_of).apply(lambda x: re.sub(r'^to ', '', x))
     self.df['act_tokenized'] = self.df['act'].apply(self.spacy_tokenizer)
+    self.df['act_verb'] = self.df['doc'].apply(self.get_verb_token_of)
+    self.df['act_obj'] = self.df['act_verb'].apply(self.get_action_obj_of)
     self.vectorize()
     self.extract_topics()
     self.df['topic_id'] = [self.modeled_data[i].argmax() for i in range(self.modeled_data.shape[0])]
@@ -99,6 +101,31 @@ class Parser:
       print("Couldn't get role of:\n {}\n {}".format(doc, E))
       return None
 
+  def get_verb_token_of(self, doc):
+    root = [token for token in doc if token.has_vector and token.similarity(self.nlp('want')) >= 0.9][0]
+    act_root_list = [child for child in root.children if child.pos_ == 'VERB']
+    if act_root_list:
+      if len(act_root_list) > 1:
+        return [act_root for act_root in act_root_list if act_root.dep_ in ['xcomp', 'dobj', 'ccomp']][0]
+      else:
+        return act_root_list[0]
+    else:
+      print("Can't find the act verb for:\n\t{}".format(doc))
+      return None
+
+  def get_action_obj_of(self, verb):
+    if verb is None:
+      return None
+    obj_list = [child for child in verb.children if child.dep_ == 'dobj']
+    if obj_list:
+      dobj = obj_list[0]
+      dobj_compound_list = [e for e in dobj.lefts if e.dep_ == 'compound'] + [dobj] + [e for e in dobj.rights if
+                                                                                       e.dep_ == 'compound']
+      return ' '.join([str(e.text) for e in dobj_compound_list])
+    else:
+      print("Can't find the act obj for:\n\t{}".format(verb))
+      return None
+
   def spacy_tokenizer(self, sentence):
     if sentence is None:
       return None
@@ -130,7 +157,7 @@ class Parser:
 
     self.modeled_data = self.model.fit_transform(self.data_vectorized)
 
-  def top_n_kw_of_topic(self, topic_id, top_n=2):
+  def top_n_kw_of_topic(self, topic_id, top_n=1):
     topic = self.model.components_[topic_id]
     return [self.vectorizer.get_feature_names()[i] for i in topic.argsort()[:-top_n - 1:-1]]
 

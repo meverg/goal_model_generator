@@ -1,0 +1,61 @@
+User Story,w_0,w_1,w_2,w_3,w_4,w_5
+"As a user, I want to search and discover music using content identification or fingerprinting.	",15,11,28,6,5,27
+"As a user, I want to search and discover music based on my profile.	",5,6,27,30,7,15
+"As a user, I want to search and discover music based on other users similar to myself.	",19,8,26,19,7,50
+"As a user, I want to search and discover music or ringback tones similar to a given music video based on content similarity.	",4,24,19,38,11,32
+"As a user, I want to search and discover music by exploiting enriched metadata and image tags, so that I find related artists, new genre, or other relevant listening path.",5,34,40,16,3,37
+"As a user, I want to upload tagged videos and have tags available for all further processing steps.	",18,21,38,49,11,21
+"As a user, I want to view thumbnail sequences of video segments.	",18,30,10,35,5,13
+"As a user, I want to get info about similar video items and segments.	",12,38,10,46,5,24
+"As a user, I want to get info about perceptually similar video items and segments.	",19,24,4,20,12,16
+"As a user, I want to receive content recommendations from similar profiles.",6,27,24,18,4,30
+"As a user, I want to receive content recommendations based on most relevant news events in my area.	",19,36,22,30,9,32
+"As a user, I want to identify persons in videos, and receive related information about them.	",10,40,16,21,8,18
+"As a user, I want to identify products in videos, and receive related information about them.	",2,10,40,21,5,33
+"As a user, I want to identify broadcaster logos in videos, and receive related information about them.	",19,20,22,49,19,6
+"As a user, I want to identify brands in videos, and receive related information about them.	",3,5,13,47,4,18
+"As a user, I want to take a picture or upload an image, so that I am recommended with videos related to that picture or image.	",15,36,1,42,13,45
+"As a user, I want to walk around, access content using a geographical map and be informed if there are videos covering the area, monuments or any other relevant point of interest.	",11,18,13,50,14,20
+"As a user, I want to search content items using automatic speech recognition.	",16,17,38,42,15,20
+"As an admin, I want to see, validate and edit segmentation of videos.	",9,12,38,24,1,19
+"As an admin, I want to annotate news video segments and extract a topic for each segment.	",11,18,29,23,6,33
+"As an admin, I want to filter and rank videos based on A/V quality aspects.	",4,10,26,13,4,26
+"As an admin, I want to get a quick assessment of whether audio material has been edited before the upload.	",1,14,39,15,8,5
+"As an admin, I want to prefilter nudity content.	",16,9,33,12,8,46
+"As an admin, I want to prefilter content using search based on low­level asset information.	",13,27,7,16,15,29
+"As an admin, I want to automatically validated the ingested contents for copyright infringement.	",11,25,12,23,12,46
+"As an admin, I want to prefilter the content using search on high­level asset information such as metadata and tags either recognized by the system of provided by the user.	",7,33,23,31,10,29
+"As a Zooniverse admin, I want to assess how interesting or appealing or complex a picture is based on automated analysis, citizen annotations, and comments on Talk.	",6,13,16,49,18,25
+"As a Zooniverse admin, I want to detect when a scientist should be prompted to look at a subject, based on annotations and information from Talk comments.	",17,3,29,46,9,20
+"As a Zooniverse admin, I want to identify volunteer types.",2,6,30,34,14,50
+"As a Zooniverse admin, I want to preclassify the Galaxy Zoo images using simple low­level image features.	",7,35,17,42,2,16
+"As a Zooniverse admin, I want to automatically detect Snapshot Serengeti images with no classifiable animals in them.",6,32,2,22,9,11
+"As a Zooniverse admin, I want to perform automatic image series detection for the case of timestamping malfunction in Snapshot Serengeti images.	",14,12,9,43,18,5
+"As a Zooniverse admin, I want to perform automatic animal species preclassification in Snapshot Serengeti.	",13,1,8,42,7,24
+"As a Zooniverse admin, I want to perform automatic animal attribute preclassification in Snapshot Serengeti.	",11,35,20,32,2,14
+"As a Zooniverse admin, I want to perform automatic animal number detection in Snapshot Serengeti.	",13,34,33,22,7,29
+"As a Zooniverse admin, I want to perform automatic segmentation or localization of plankton in Plankton Portal.	",10,13,39,29,15,50
+"As a Zooniverse admin, I want to automatically detect Plankton Portal images with no classifiable plankton in them.	",10,12,3,50,7,39
+"As a Zooniverse admin, I want to perform automatic detection of plankton size or orientation in Plankton Portal images.	",17,1,22,32,20,12
+"As a Zooniverse admin, I want to perform automatic preclassification of plankton species in Plankton Portal images.	",13,21,21,14,5,4
+"As a Zooniverse admin, I want to perform automatic worm motion analysis to reduce video duration in Worm Watch Lab.	",20,11,26,26,4,49
+"As a Zooniverse admin, I want to automatically detect the time in a Worm Watch Lab video where the worm lays an egg.	",19,29,34,25,17,23
+"As a Zooniverse admin, I want to detect important features such as areas of flooding, damage, temporary shelters, blocked roads etc in the satellite images.	",19,1,38,18,12,42
+"As a Zooniverse admin, I want to assess the probability/weight of a volunteer’s classification based on their experience.	",8,10,13,13,10,8
+"As a Zooniverse admin, I want to perform prefiltering of the images to remove artefacts such as bright stars and camera read errors.	",17,6,6,17,3,3
+"As a Zooniverse admin, I want to detect moving and transient objects in the images.	",14,31,25,37,4,41
+"As a Zooniverse admin, I want to remove background noise and distracting sounds from the audio files.	",13,40,31,6,1,33
+"As a Zooniverse admin, I want to group whale calls that are similar.	",15,8,4,35,20,21
+"As a Zooniverse admin, I want to identify the number of whales heard in a single audio file.	",12,26,38,34,1,14
+"As a Zooniverse admin, I want to know when I should interrupt a volunteer.	",18,4,2,12,19,21
+"As a Zooniverse admin, I want to know whether I should interrupt a volunteer with text, an image, or a video.	",4,40,39,5,19,35
+"As a Zooniverse admin, I want to know when I should educate a volunteer.	",11,37,26,50,16,44
+"As a Zooniverse admin, I want to know whether I should educate a volunteer with text, an image, or a video.	",7,40,34,48,10,41
+"As a Zooniverse admin,I want to know which piece of education I should give to a volunteer.	",12,25,8,48,8,40
+"As a Zooniverse admin, I want to know when a volunteer has made an interesting comment on a subject.	",17,19,16,42,1,39
+"As a Zooniverse admin, I want to know when Zoonibot should comment on a subject.",5,22,36,8,18,23
+"As a Zooniverse admin, I want to know when Zoonibot should give an explanation.	",17,36,38,23,15,27
+"As a Zooniverse admin, I want to know what Zoonibot should say to a volunteer.	",4,39,10,31,17,3
+"As a Zooniverse admin, I want to group subjects by similarity.	",15,20,24,39,9,23
+"As a Zooniverse admin, I want to recommend different projects to volunteers based on their previous experiences.	",17,24,26,26,18,23
+"As an admin, I want to see a summary of articles, so that I reuse them.	",11,10,25,36,13,46

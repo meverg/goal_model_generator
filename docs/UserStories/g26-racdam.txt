@@ -1,0 +1,101 @@
+User Story,w_0,w_1,w_2,w_3,w_4,w_5
+"As an archivist, I want to apply a license or rights statement, so that I know what I can do with a file.",9,6,14,42,34,10
+"As an archivist, I want to mark individual files as restricted, so that they don't get shared by mistake.",19,11,17,42,5,10
+"As an archivist, I want to mark groups of files as restricted, so that they don't get shared by mistake.",36,5,14,42,2,6
+"As an archivist, I want to restrict a file from view.",22,29,12,19,26,8
+"As an archivist, I want to restrict a group of files from view.",10,33,8,32,15,3
+"As an archivist, I want to set a date on which restrictions will be removed from a file, so that that I don't have to update this by hand.",32,1,12,35,32,7
+"As an archivist, I want to add restriction end date information to files, so that I can share files when they become open.",13,15,11,1,37,6
+"As an archivist, I want to add detailed restrictions to groups of files, so that I know if and how they can be shared.",26,33,7,49,27,2
+"As an archivist, I want to restrict access to some files by IP address, so that I can give reading room access only to certain digital files.",8,2,12,11,35,5
+"As an archivist, I want to restrict access to certain files by user, so that I can allow donor representatives to see certain files.",29,9,14,2,24,2
+"As an archivist, I want to know if a photo has already been scanned, so that I can license it to a researcher.",8,4,13,42,11,1
+"As an archivist, I want to select existing rights statuses and statements, so that I can easily create uniform rights statements.",39,31,14,50,27,6
+"As an archivist, I want to redact information in digital files for a period of time, so that I can provide access to non-sensitive portions of a record.",9,30,20,26,34,8
+"As an archivist, I want to have an online form for licensing archival material, so that the process is more transparent and some of the back and forth can be eliminated.",7,39,9,19,13,10
+"As an archivist, I want to batch edit metadata about files.",32,30,19,17,28,9
+"As an archivist, I want to upload a single file.",25,1,19,28,8,6
+"As an archivist, I want to upload groups of files, so that I can save time.",25,28,14,19,28,3
+"As an archivist, I want to automatically create access copies of files, so that I don't have to do this manually.",19,4,12,46,36,8
+"As an archivist, I want to automatically generate technical metadata, so that I know the file size.",15,12,9,10,10,4
+"As an assistant archivist, I want to upload and tag staff generated working papers, so that staff and researchers are able to easily access them.",39,40,4,5,25,5
+"As an archivist, I want to distinguish between digital objects digitized to preservation standards and those created for access purposes only, so that I know whether I should apply preservation actions.",8,26,7,26,10,10
+"As an archivist, I want to link electronic versions of researchers' publications to citations, so that I can share them with other researchers.",39,12,3,27,19,6
+"As an archivist, I want to upload scans of images created while answering research requests, so that they can be used again for other research requests.",13,22,13,8,7,1
+"As an archivist, I want to create quality scans of images and documents, so that they can be reused.",15,24,6,16,34,8
+"As an archivist, I want to automatically create access derivatives of digital objects, so that I don't have to do this manually.",33,8,18,43,6,10
+"As an archivist, I want to automatically assign unique identifiers to material I scan, so that I avoid potential errors.",27,19,1,20,10,9
+"As an archivist, I want to automatically embed metadata in file headers, so that I avoid repetitive and easily-forgotten tasks.",3,5,14,18,35,5
+"As an archivist, I want to rotate images, so that I can orient them correctly.",14,21,4,5,27,3
+"As an archivist, I want to apply automatic contrast and level operations to a scanned file, so that I can eliminate unnecessary work.",20,1,17,22,30,4
+"As an archivist, I want to perform contrast, level and other manipulations manually, so that I can improve on results from automated tools.",16,30,12,34,3,8
+"As a donor representative, I want to supply incremental accruals to new and existing collections, so that material can be transferred on an ongoing basis.",25,23,7,48,38,3
+"As an archivist, I want to manage scans of archival material created for educational visits, so that find and refer to them for another visit.",3,5,17,41,39,2
+"As an archivist, I want to manage loan documentation, including preservation photos, forms and correspondence, so that I can find it easily later.",36,27,9,2,25,3
+"As a researcher, I want to generate structured citation data, so that so I can cite a file in a publication.",40,9,14,2,7,8
+"As a researcher, I want to share a link to a file on social media, so that so I can show other people an interesting thing I found.",8,19,6,43,31,5
+"As a researcher, I want to understand the copyright status of the image, so that I know if I can use it.",33,11,3,45,32,10
+"As a researcher I want clear citation information on each document, so that I can cite accurately in a publication.",34,27,7,16,27,10
+"As a researcher, I want to share reports I've written, so that it is available to staff and researchers.",24,9,6,10,13,6
+"As a researcher, I want to download a file, so that I can use it for research without having to come to the reading room.",18,34,12,40,21,8
+"As a researcher, I want to download reports, so that I can use them in immediate and future in talks and articles.",28,4,6,48,26,9
+"As a researcher, I want to locate photographs and documents that I can share on social media.",24,24,4,41,2,9
+"As a researcher, I want to request analog versions of digital objects, so that I can view them in the reading room.",14,7,6,19,3,1
+"As a researcher, I want to order copies of photos, so that I can use them in a publication.",12,7,14,1,37,4
+"As a researcher, I want to receive a notification if something I request in the reading room or for duplication is already digitized, so that I don't have to put in that request.",37,2,11,41,31,4
+"As an archivist, I want to make information about rights available to researchers and donors, so that they know what they can do with images.",37,30,19,20,4,7
+"As an archivist, I want to ensure that emails sent about specific objects contain accurate citation information, so that I can confirm which object is being referred to.",2,39,18,49,10,8
+"As a researcher, I want to stream audio and video files in my web browser.",19,14,8,23,14,5
+"As a researcher, I want to export descriptive data in a common format, so that I can use text mining tools on it.",18,25,14,46,16,2
+"As an archivist, I want to track use of a photo, so that I know if I've sent it to a researcher before.",2,31,9,46,24,3
+"As an archivist, I want to see what a particular user has downloaded, so that I can track use of assets.",15,35,17,19,36,2
+"As an archivist, I want to provide access to digital copies of unprocessed material, so that donors can access things they have given us.",40,3,13,12,19,5
+"As an archivist, I want to make as much archival material as possible available for use, so that I can fulfill the RAC's mission.",18,34,19,48,16,5
+"As an archivist, I want to use archival content on the RAC website, so that I can integrate our collections into our web presence.",40,35,18,16,36,8
+"As a donor representative, I want to access the descriptive information about the images scanned for my institutions needs.",5,4,5,11,3,4
+"As a donor representative, I want to look at images that have been scanned from my collection, so that so that I can use them in my institutions exhibits, reports etc.",34,10,18,23,33,9
+"As a researcher, I want to search all files by keyword.",34,9,7,35,28,9
+"As a researcher, I want to search by keyword, so that I can learn what already exists digitally and avoid placing additional duplication requests.",21,6,15,10,21,10
+"As a researcher, I want to see common material across collections, so that so I can prepare a comprehensive analysis.",18,22,3,35,39,5
+"As a researcher, I want to browse through files in a collection.",4,6,11,50,27,9
+"As an archivist, I want to browse through files in a collection.",28,19,11,1,23,3
+"As an archivist, I want to search all files by keyword.",17,33,16,44,20,3
+"As an archivist, I want to upload inventories, so that our donor representatives have an easier time requesting their material.",32,37,4,41,12,6
+"As an archivist, I want to search by tag, so that it makes finding particular photographs easier.",12,32,15,45,24,5
+"As an archivist, I want to access the digital files on the X-drive, so that I can use them.",4,31,11,32,10,9
+"As an assistant archivist, I want to easily access interdepartmental forms.",16,26,8,32,22,6
+"As an archivist, I want to have electronic versions of the collection files available for staff use, so that I increase accessibility and I do not lose the original files.",25,37,15,3,20,5
+"As a researcher, I want to be able to search across photo collection images, so that I can prepare presentations.",10,3,9,19,16,3
+"As a researcher, I want to search using structured data, so that I can find everything relevant to my inquiry across collections.",27,16,12,40,6,3
+"As a researcher, I want to access tagged working papers, so that my research process is better informed.",40,28,7,1,28,7
+"As a researcher, I want to access educational outreach materials, so that I can make connections with institutions.",2,8,1,10,9,6
+"As a researcher, I want to have accurate cross-collection citation information, so that I can find materials again.",3,31,16,4,13,8
+"As a researcher, I want to access digitized archival materials without mediation, so that I can decide what, I want to look at.",24,5,20,13,13,8
+"As an archivist, I want to distinguish between images scanned in color or black and white, so that I know whether or not these images meet publication requirements.",20,36,6,9,40,7
+"As a researcher, I want to ask a question about a specific file, so that I can find out more information.",25,12,14,24,21,5
+"As a researcher, I want to search OCRed text in all available digitized textual documents, so that I can more efficiently locate digitized documents relevant to my research.",7,30,7,22,39,6
+"As a researcher, I want to know the date on which something was digitized, so that I know if it's been digitized since I last looked.",13,9,12,38,5,8
+"As a researcher, I want to keyword search across all of an RF program officer's scanned diaries, rather than having to search each scanned diary segment separately, so that I can more efficiently locate diary entries relevant to my research.",2,32,9,5,8,8
+"As an archivist, I want to access inventories for unprocessed collections, so that I can provide reference services to donors.",6,8,16,2,15,5
+"As a researcher, I want to view thumbnails of photos, so that I can make a selection of which one I want to license.",34,4,19,26,33,8
+"As a researcher, I want to know when only part of a folder has been digitized, so that I know if I am seeing everything or only a portion.",40,15,18,40,30,4
+"As a donor representative, I want to see thumbnails of images, so that I can select which one I want.",29,33,14,29,23,10
+"As an researcher, I want to view film clips, so that I can see excerpts of films.",14,34,12,12,14,10
+"As an archivist, I want to search images by photographer.",39,31,2,13,24,6
+"As an archivist, I want to search images by people represented in them.",28,18,12,2,5,9
+"As an archivist, I want to search images by place the photo was taken.",20,27,19,14,15,5
+"As an archivist, I want to search images by rights.",22,19,1,47,28,9
+"As an archivist, I want to search index cards and other non-public finding aids, so that I can provide better research assistance.",2,18,1,46,1,2
+"As an archivist, I want to view collection files, so that I can gain background information for processing a collection.",33,25,2,40,4,5
+"As an archivist, I want to view physical locations for non-archival material, so that I can provide research services to donors.",15,39,14,2,23,6
+"As an archivist, I want to find files that cannot be made publicly available, so that I can easily access everything that's been digitized.",4,6,18,50,37,2
+"As an archivist, I want to access metadata and visual representations of index cards, so that I can use that information to assist researchers.",28,11,1,14,5,5
+"As an archivist, I want to search individual material types.",13,1,11,6,19,9
+"As an archivist, I want to search images by uploading an image, so that so I can find images when i don't have any metadata.",20,27,5,21,3,5
+"As an administrator, I want to create user groups, so that I can control user permissions.",32,34,3,31,20,8
+"As an administrator, I want to create user roles, so that I can group users by role.",12,37,5,4,2,2
+"As an administrator, I want to assign RAC staff to different user groups, so that I can control read/write access.",31,18,4,19,9,5
+"As an administrator, I want to assign rights to user groups or roles, so that I can control what users can and can't do.",33,29,3,40,8,7
+"As an administrator, I want to allow users to log in using Active Directory credentials, so that I don't have to manage another set of usernames and passwords.",10,8,11,8,28,6
+"As an administrator, I want to have researchers reset their own passwords, so that I don't have to send passwords in cleartext.",32,32,7,37,36,1
+"As an administrator, I want to limit who can see certain metadata fields, so that I can show or hide things from display based on user groups.",19,36,13,14,29,3

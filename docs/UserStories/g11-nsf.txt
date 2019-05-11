@@ -1,0 +1,74 @@
+User Story,w_0,w_1
+"As a team member, I want to see the first iteration of beta up on cloud.gov.",20,6
+"As a developer, I want to have the subdomain beta.nsf.gov be set up, so that I can deploy a beta site to it.",14,9
+"As a stakeholder, I want to have a decision on whether or not the blog aggregator may work for beta, and if not what will.",14,7
+"As an NSF employee, I want to understand the process of switching the cloud.gov hosting plan over from prototype to FISMA low.",2,6
+"As a stakeholder, I want to see the results of user research, so that I can determine if the CMS is right for me.",6,10
+"As a designer, I want to have a new social media wireframe, so that I can begin implementing design.",14,3
+"As a team member, I want to have a prioritized list of features and elements of a future social element page, so that I can work with the engineers to determine feasibility.",5,1
+"As a team member, I want to determine a design direction for the beta social page, so that we can implement a beta site quickly without established brand guidelines.",12,7
+"As a user researcher, I want to test the user research plan, so that I make sure the in-person interviews are effective and capturing the right information.",20,3
+"As a user researcher, I want to have the finalized OLPA task script, so that I can begin testing with internal users.",6,9
+"As a content editor, I want to be able to easily find content, so that I can edit it.",11,10
+"As a research participant, I want to make sure that the appearance of the prototype does not distract from the workflow, so that I can complete the user interview.",18,1
+"As a user researcher, I want to have the WIG prototype, so that I can finalize the second task script.",11,3
+"As a user, I want to add a video to my article.",18,1
+"As a team member, I want to meet with DIS / cloud.gov, so that I can determine the requirements for the beta.nsf.gov ATO.",16,3
+"As a user researcher, I want to have a list of priority workflow candidates that we might test, so that I can make sure we're capturing the priority areas.",1,5
+"As a team member, I want to understand what the MVP should look like, so that I can begin understanding workflow needs as they pertain to any CMS decision.",7,4
+"As an NSF administrator, I want to shadow the CMS implementation, so that I can learn as the prototype is developed further.",17,3
+"As a team member, I want to have an updated acquisitions roadmap, so that I can plan accordingly.",11,1
+"As an NSF employee, I want to have an updated roadmap document, so that I can see prioritized areas to focus on for the next few months and beyond.",3,8
+"As a team member, I want to understand how time off overlaps with plans around the user research.",17,3
+"As a researcher, I want to develop the user research protocol for internal workflows, so that we can begin testing against a CMS prototype.",19,7
+"As a CMS administrator, I want to have roles, so that I can assign them to my users.",11,8
+"As an NSF employee, I want to narrow down the universe of CMS options and identify/prioritize key considerations for getting to the next step.",10,1
+"As an NSF employee, I want to have a final workshop to identify key lessons and features for the content management system decision.",1,10
+"As a CMS SME, I want to see the webmaster workflow report, so that I can understand how this might impact current direction.",9,2
+"As an NSF employee, I want to understand work performed, so that I can understand when and what I can use later.",2,2
+"As a researcher, I want to recruit for the last round of user research, so that we can summarize our findings and synthesize results.",16,10
+"As a user researcher, I want to continue scheduling interviews for hypothesis #1, so that I can be prepared to test our first prototype.",9,1
+"As an NSF employee, I want to have high-level strategy recommendations to implement in conjunction with the new CMS.",6,4
+"As an NSF employee, I want to have editorial-planning recommendations, so that I can understand how they might impact an eventual CMS / future web presence.",19,5
+"As an NSF employee, I want to know how brand guidelines are developed and maintained, so that I can incorporate them throughout the project.",9,2
+"As a web recruiter manager, I want to confirm the recruiter is set up and working properly on Science360.gov.",19,8
+"As an NSF employee, I want to know how visual design directions were developed, so that I can make better design decisions in the future.",17,3
+"As a team member, I want to know what the first hypothesis is, so that I can start developing a prototype to test.",4,6
+"As a content designer, I want to develop a better understanding of NSF's content types and editorial plan, so that I can make more informed recommendations going forward.",15,10
+"As a team member, I want to have a prototype strategy, so that I understand how we will gain understandings from tests that will drive recommendations.",16,4
+"As a content designer, I want to demonstrate the value of user-centered content design to ensure it's an integral part of our recommendations.",13,8
+"As a user researcher, I want to know when outreach to lists is successful, so that I can plan on a new release to the next listserv on the priority list.",4,4
+"As an NSF employee, I want to schedule regular in-person check-ins, so that we can continue to communicate the goals of the project with our stakeholders.",19,2
+"As a developer, I want to know what the three initial hypotheses are, so that I can plan work around development of prototypes.",18,5
+"As a workshop attendee, I want to have a summary of what we learned, so that I can understand our next steps and how they apply to me.",16,9
+"As a designer, I want to know what early indications of hypotheses might be, so that I can start planning for the first prototype.",12,8
+"As a team member, I want to have a schedule of more coworking slots, so that I can work in tandem with the rest of the team on a more regular basis.",6,7
+"As an NSF person interested in attending user interviews, I want to know when they are scheduled and the type of user that will be interviewed.",5,3
+"As an NSF member of the team, I want to have a place where I can access all the related reports and documentation, so that I can refer to it easily now and in the future.",6,3
+"As a team member, I want to know when the mid-point checkin is and what will be covered, so that I can plan accordingly.",16,10
+"As an NSF employee, I want to join Github, so that I can participate in the issues as assigned.",6,4
+"As an NSF employee, I want to learn about how Github is used, so that I can participate in the issues as assigned.",18,10
+"As a user researcher, I want to begin identifying interview participants, so that I can understand what educators and science influencers need from a future nsf.gov website.",16,6
+"As a VisualDesigner, I want to concept different styles for the nsf.gov website, so that we can discuss different design concepts with stakeholders.",5,3
+"As a user researcher, I want to set up a website recruitment test, so that I can see if we can recruit users in real time from the website.",18,9
+"As a web recruiter manager, I want to confirm the recruiter is set up and working properly, so that I can deploy it on more pages.",12,4
+"As a VisualDesigner, I want to create a moodboard to aid with visual design concepts for the nsf.gov website, so that we can discuss different design concepts with stakeholders.",19,1
+"As a workshop attendee, I want to see a summary on major findings from the event.",13,9
+"As a user researcher, I want to make sure the correct NSF people are invited to user interviews, so that they can observe the interviews and make recommendations accordingly.",7,3
+"As a user researcher, I want to begin drafting a research plan, so that I can begin recruiting participants.",12,9
+"As a content editor, I want to be able to add videos from Brightcove.",17,3
+"As an author, I want to be able to indent / outdent content.",12,4
+"As a VisualDesigner, I want to demonstrate the value of visual design to the NSF project team, so that visual design is an integral part of a redesign.",16,9
+"As a team member, I want to know what visual design related tasks we might need to plan for this sprint, so that I can assign tasks as necessary.",6,7
+"As a team member, I want to have recruiting-email templates ready to go, so that I can start recruiting interviewees ASAP!.",11,3
+"As an NSF employee, I want to see how the user recruitment form looks and behaves on a sample page, so that I can understand the impact the recruitment will have on the NSF page.",3,6
+"As a potential research participant, I want to learn about the research and leave my contact information.",8,1
+"As a team member, I want to have a high-level sense of the project timeline, so that I can plan my work.",6,4
+"As a site administrator, I want to understand how other similar organizations are handling visual design, so that I can make informed decisions about what appears to work well and what doesn't.",4,4
+"As a team member, I want to have a platform that allows me to rapidly prototype HTML ideas.",16,1
+"As a site administrator, I want to understand how other similar organizations are handling content, so that I can make informed decisions about what appears to work well and what doesn't.",11,3
+"As a user researcher, I want to conduct a user definition workshop with NSF, so that I can better prepare them and the team for future research work.",4,5
+"As an NSF employee, I want to know where the initial in-person meeting will be, so that I can plan on attending.",8,6
+"As a designer, I want to have a style guide / design guide / content guide, so that we have a uniform way of delivering product.",14,6
+"As a team member, I want to know when meetings are, so that I can plan accordingly.",5,7
+"As a team member, I want to understand how work moves between UX/content > visual design > front end dev for a sprint cycle.",18,7
