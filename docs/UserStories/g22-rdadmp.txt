@@ -1,0 +1,84 @@
+User Story,w_0,w_1,w_2,w_3
+"As a PI, I want to properly record all metadata, so that I can ensure proper running of the project in case of staff changes.",2,17,5,16
+"As a researcher, I want to indicate where my data will be stored during the project and where after the project, so that it remains accessible during all stages of the data lifecycle.",29,19,4,8
+"As a researcher, I want to import metadata that I captured with a metadata tool, so that I do not have to capture it again in a DMP.",31,4,16,12
+"As a data manager, I want to know how the data is used, so that I can develop more detailed usage and support scenarios with researchers.",22,17,11,9
+"As a repository owner, I want to be able to check the planned provenance of the data that will be submitted at the end of a project, so that I can calculate necessary submission fees and check whether it belongs to our target group.",18,3,14,4
+"As an IT manager, I want to know about IT resource requirements early in the project lifecycle, so that I can enable resource acquisition planning.",30,10,3,6
+"As a PI, I want to plan what kind of data I want to record/store, so that I can ensure it will possible to store it.",6,7,8,10
+"As an IT staff member, I want to know the security requirements of the data, so that I know which kind of security measures to apply.",21,13,17,17
+"As a data manager, I want to have the description of collected data sets that are used or updated throughout the project lifecycle, so that I can ensure the descriptions are current and add detail as the study proceeds.",12,18,3,20
+"As a researcher, I want to know which topics are mandatory and similar in all DMPs, so that I can save time through quickly writing it.",16,7,4,11
+"As a data manager, I want to know what the content of the data is, so that I can decide to which collection or repository the data fits.",36,14,9,12
+"As a PI, I want to record information about my DMP, so that an Ethics Committee can review this for compliance with ethical standards.",10,19,16,15
+"As a legalofficer, I want to know about data sensitivity, so that I can establish sharing options.",21,8,8,12
+"As a data librarian, I want to extract pointers from the DMP to metadata held in other systems, so that I can import this metadata into a data catalogue.",5,1,20,10
+"As an IT staff member, I want to have an estimate of the produced data volume, so that I can plan the overall storage consumption.",20,17,4,13
+"As an administrator, I want to know who funded the project and their requirements, so that I can track the funder specific obligations.",21,13,19,15
+"As an archivemanager, I want to know the legal status of data, so that I can apply the legal requirements accordingly.",33,12,14,16
+"As a data manager, I want to know which kind of data types will be produced or collected, so that I can determine what basic support services and functionalities are required.",13,15,17,20
+"As an IT staff member, I want to know which kind of data types will be produced or collected, so that I can determine what basic support services and functionalities are required.",1,13,13,18
+"As an archivemanager, I want to know in advance the conservation period of data, so that I can better organize the service by adapting the preservation actions.",29,2,10,7
+"As a data manager, I want to document all rights necessary for managing the data, so that I can curate and preserve the data.",4,20,3,18
+"As a data manager, I want to know what the content of the data is, so that I can check whether the necessary expertise for maintaining intellectual reusability is available.",13,6,14,3
+"As a research head, I want to access to the persistent identifiers of datasets provided in the DMP, so that I can check that the DMP has been implemented.",18,3,12,7
+"As a funder, I want to be able to read the costs for data management from the DMP, so that I can check whether our policies work as intended.",17,4,10,19
+"As a researcher, I want the DMP to prepopulate information that I have already entered in other institutional systems, so that I do not have to re-enter information ensuring the DMP contains accurate and standardized information.",23,17,5,14
+"As a stakeholder, I want to know when the data management plan was created or updated, so that I know how up-to-date the plan is or whether it needs to be updated.",36,1,7,5
+"As a stakeholder, I want to know who is responsible for the DMP, so that I can ask them about further details.",5,10,9,15
+"As a stakeholder, I want to have references to the project proposal, so that I can look up further general information.",26,1,17,20
+"As a metadata manager, I want to have a short description of project, so that I can be informed about the metadata description.",2,1,10,11
+"As a rector, I want to know how many data will be stored, so that I can plan long term resources.",40,5,8,17
+"As a data manager, I want to know the time plan for collecting data, so that I can plan the data management.",16,1,16,14
+"As a data librarian, I want to import administrative information regarding a project into DMP, so that I can prepopulate the DMP.",23,16,4,14
+"As a manager, I want to know about all resources and services used for the data, so that I can estimate the true cost of the project.",40,19,2,19
+"As an archivemanager, I want to reuse the information regarding file format, so that I can apply automated checks for the file validation.",33,8,4,5
+"As a researcher, I want to know how many resources are needed during the project, so that I can calculate costs.",7,1,16,10
+"As a researcher, I want to extract the description of the data collected, so that I can reuse it for the writing of a data paper.",15,15,2,13
+"As a researcher, I want to record research publications in the institutional repository or CRIS with DMP records, so that I can generate reports of research output resulting from a project.",24,3,16,8
+"As a researcher, I want to link research publications in the institutional repository or CRIS with DMP records, so that I can generate reports of research output resulting from a project.",9,9,6,7
+"As a researcher, I want to store agreements relating to third party data used in a project, so that the data can be cited, attributed and used correctly.",32,8,14,7
+"As an ethics manager, I want to be informed about the data, so that I can check for sensitivity of data.",18,4,18,12
+"As a repository operator, I want to know about the kind of data, so that I can evaluate the storage size and system.",29,10,6,20
+"As a researcher, I want to know about costs, so that I can plan my research.",7,3,5,9
+"As a repository manager, I need details on the type of data, so that I can check if the archiving can be arranged.",2,19,2,19
+"As an IT officer, I want to know how secure data is, so that I can ensure legal compliance.",25,18,11,13
+"As a funder, I want to know how secure data is, so that I can ensure legal compliance.",35,17,5,16
+"As a Research Centre Director, I want to receive regular summary reports of research data, so that I understand trends in data use among staff and postgraduate students.",11,13,18,3
+"As a Postgraduate Convenor, I want to receive regular summary reports of research data, so that I understand trends in data use among staff and postgraduate students.",38,10,4,10
+"As a research support officer, I want to ensure compliance to the funders’ rules, so that I can ensure all costs will be accepted.",32,10,7,8
+"As a funder, I want to be able to check all the repositories mentioned in a DMP, so that I can verify whether the project has followed our funding rules.",28,2,8,18
+"As a PI, I want to plan what kind of data I want to store, so that I can ensure it will be possible to store it.",33,8,6,19
+"As a PI, I want to know how secure data is, so that I can ensure legal compliance.",9,6,9,6
+"As a Director of Research Integrity, I want to access reports containing details of research projects in which data are classified as sensitive or highly sensitive, so that I can confirm security protocols are applied to these data.",1,12,18,7
+"As an archive, I want to get information about the volume of data to preserve at an early stage, so that I can provide the adequate storage infrastructure.",2,1,6,8
+"As a researcher, I want to know how long it will take to archive, so that I can plan further steps.",31,5,20,19
+"As a PI, I want to know who owns the data, so that I know what I am allowed to do with it.",6,12,12,5
+"As a data manager, I want to have references to documentation of the data and its creation process, so that the data can be re-used and managed.",12,20,10,12
+"As an archivemanager, I want to make sure that detailed metadata are associated to data so that it will be understandable by future users.",39,7,10,16
+"As a data manager, I want to know which kind of data types will be produced or collected, so that I can ensure that the necessary technical resources and technical know-how is available.",8,15,9,16
+"As an IT staff member, I want to know which kind of data types will be produced or collected, so that I can ensure that the necessary technical resources and technical know-how is available.",35,8,14,11
+"As an IT staff member, I want to know how the data is used, so that I can determine what kind of basic services and functionalities are required.",30,16,8,3
+"As a data manager, I want to know whether the collected data depends on other data sets from my own or other institutions, so that I can ensure that these dependencies are maintained.",3,10,12,10
+"As an IT staff member, I want to know which formats are used, so that I can determine what kind of technical services and functionalities are required.",40,14,5,1
+"As an IT staff member, I want to know with which software or technology the data is produced or used, so that I can determine what kind of technical services and functionalities are required.",19,3,13,13
+"As a data manager, I want to know which information is necessary to re-use the data, so that it can be checked whether all necessary information is available for researchers interested in re-using the data.",10,5,17,14
+"As a data manager, I want to know which formats are used, so that I know what technology or background information might be necessary to use the data.",26,8,2,6
+"As a data manager, I want to know whether the data can be reproduced efficiently, so that I can determine whether and how the data has to be stored.",23,18,10,6
+"As a data manager, I want to know with which software or technology the data is produced or used, so that I know what technology or background information might be necessary to (re-)use the data.",1,3,19,14
+"As a research evaluation manager, I want to ensure all data are quoted correctly with our affiliation, so that they are counted towards our citation counts.",30,17,11,8
+"As an administrator, I want to check that all data has the appropriate security level, so that I can demonstrate compliance.",23,20,12,4
+"As a data manager, I want to know the security requirements of the data, so that I can check whether the data can be kept secure.",17,7,15,15
+"As a institutional data steward, I want to be able to extract the data sets that are submitted to external repositories, so that I can add them to an institutional data catalogue.",20,10,1,11
+"As an institutional data manager, I want to know about the privacy and security requirements of the data, so that I can plan the right storage system and sharing permissions.",7,13,20,2
+"As a researcher, I want to see the sections on costing by other researchers in my department, so that I can see if we could share data manager posts.",36,10,13,20
+"As a researcher, I want to see the sections on roles submitted by other researchers in my department, so that I can see if we could share data manager posts.",6,16,5,3
+"As a researcher, I want to see the sections on responsibilities submitted by other researchers in my department, so that I can see if we could share data manager posts.",6,7,16,17
+"As a faculty data steward, I want to see the sections on costing, so that I can ensure sufficient expertise on data management to support the project.",3,19,4,18
+"As a faculty data steward, I want to see the sections on roles, so that I can ensure sufficient expertise on data management to support the project.",2,1,4,8
+"As a faculty data steward, I want to see the sections on responsibilities, so that I can ensure sufficient expertise on data management to support the project.",31,5,16,12
+"As a data manager, I want to clarify the necessary rights for re-using the data, so that it is legal to reuse the data.",32,16,15,2
+"As a researcher, I want to record my intention to share data I have collected under terms of a particular licence, so that other researchers who use the data understand the rights of use.",37,18,7,20
+"As a data manager, I want to plan the anonymization of data, so that we protect the privacy of the people participating in the research as good as possible and still ensure reusability of data.",17,5,5,20
+"As a repository manager, I want to have metadata in additional languages, so that I can allow for multilingual data archive.",35,3,20,3
+"As a data manager, I want to know whether the DMP was approved, so that I can proceed with the required next steps.",34,8,20,12

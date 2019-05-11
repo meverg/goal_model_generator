@@ -1,0 +1,139 @@
+User Story,w_0,w_1,w_2,w_3
+"As an OlderPerson, I want to know exactly what ALFRED does with my personal data, and share it only on my specific permission. ",9,33,9,3
+"As an OlderPerson, I want to receive information from ALFRED by speech technology. ",16,38,5,3
+"As an OlderPerson, I want to use only well-visible buttons.",16,22,9,1
+"As an OlderPerson, I want to use ALFRED as much as possible with speech interaction.",19,26,7,6
+"As an OlderPerson, I want to always keep control on the activities of ALFRED. ",14,39,6,4
+"As an OlderPerson, I want to be able to manage my privacy and data settings. ",14,13,5,5
+"As an OlderPerson, I want to have everything preinstalled, so that I do not have to set up ALFRED by myself.",20,18,2,1
+"As an OlderPerson, I want to have a small ALFRED device that is wearable and easy to carry with me.",15,16,2,5
+"As an OlderPerson, I want to have ALFRED on all my computers, tablets and phone.",12,40,10,6
+"As an OlderPerson, I want to have ALFRED on a bracelet or a necklace, so that I can always wear him with me. ",14,37,8,4
+"As an OlderPerson, I want to have clear instructions and service after sales that guide me if I have trouble in using ALFRED.",19,33,6,5
+"As an OlderPerson, I want to have an ALFRED device that speaks very slowly and clearly.",7,6,10,2
+"As an OlderPerson, I want to have an ALFRED device that only reacts to me.",16,17,3,6
+"As an OlderPerson, I want to have an ALFRED device that only listens to me when I ask it to. ",2,28,3,4
+"As an OlderPerson, I want to have an introduction conversation with ALFRED, so that I can learn everything about him and he about me. ",15,31,4,4
+"As an OlderPerson, I want to buy ALFRED in a senior shop with special client support. ",7,4,1,2
+"As an OlderPerson, I want to buy ALFRED for a low price. ",18,29,1,10
+"As an OlderPerson, I want to receive visual support, especially when looking at a list, map or agenda.",8,9,5,8
+"As an OlderPerson, I want to use ALFRED to pay for small amounts.",1,23,7,6
+"As an OlderPerson, I want to have a very good battery for ALFRED so I can keep him on the whole day.",11,8,4,8
+"As an OlderPerson, I want to have an ALFRED device that informs me about a low battery when leaving the house. ",4,29,10,7
+"As an OlderPerson, I want to have an ALFRED device that can be easily adapted for user that have visual or hearing troubles.",15,9,3,10
+"As an OlderPerson, I want to have an ALFRED device that can be easily adapted for user that have visual troubles. ",4,8,1,10
+"As an OlderPerson, I want to have an ALFRED device that can be easily adapted for user that have hearing trouble. ",14,6,2,3
+"As an OlderPerson, I want to have an ALFRED device that repeats the last phrase. ",13,21,4,6
+"As an OlderPerson, I want to be able to zoom into visual content. ",10,12,10,1
+"As an OlderPerson, I want to have an ALFRED device that responds to the changing demand of the users by offering new Apps in the ALFREDO platform.",8,6,4,9
+"As an OlderPerson, I want to have an ALFRED device that helps me to communicate with my friends and family. ",4,34,6,2
+"As an OlderPerson, I want to have video conversation with others. ",16,30,8,5
+"As a MedicalCaregiver, I want to have videophone. ",7,29,4,9
+"As an OlderPerson, I want to have an AFLRED device that encourages its users for real interaction between humans and not only with ICT tools. ",8,34,8,1
+"As an OlderPerson, I want to have an ALFRED device that provides me with information about existing apps that corresponds to my interests. ",4,3,10,1
+"As an OlderPerson, I want to be able to customize my preferences in the different functionalities of the solution.",12,8,7,6
+"As a MedicalCaregiver, I want to have a simple ALFRED unit that is expandable in is functions. ",13,24,8,10
+"As an OlderPerson, I want to have my data stored directly on the phone.",10,23,2,3
+"As an OlderPerson, I want to receive a wake up call from ALFRED in the morning checking on me if I am ok.",9,7,2,2
+"As an OlderPerson, I want to receive day and night rythm support with agenda reminders. ",12,7,3,5
+"As an OlderPerson, I want to receive support to use the public transport. ",2,21,8,4
+"As an OlderPerson, I want to use ALFRED for navigation. ",4,12,5,7
+"As an OlderPerson, I want to use ALFRED for touristic walks and indications with explanations on historical and cultural sights. ",15,3,4,9
+"As an OlderPerson, I want to receive support to have a taxi on time. ",8,19,5,6
+"As an OlderPerson, I want to use ALFRED to see who is standing at my door and open the door. ",13,26,3,9
+"As an OlderPerson, I want to use ALFRED to pick the phone sooner up when I am at home. ",19,6,8,8
+"As an OlderPerson, I want to use ALFRED to turn on/off the lights. ",10,12,7,6
+"As an OlderPerson, I want to use ALFRED to control the heating. ",5,34,1,2
+"As an OlderPerson, I want to use ALFRED to control the TV and radio. ",14,36,10,5
+"As an OlderPerson, I want to use ALFRED to watch movies. ",19,16,1,9
+"As an OlderPerson, I want to use ALFRED to hear about the news. ",8,6,1,10
+"As an OlderPerson, I want to use ALFRED to contact help in case of an emergency. ",11,13,1,3
+"As a MedicalCaregiver, I want to use video calls in case of emergency. ",7,11,8,6
+"As an OlderPerson, I want to have ALFRED contact the nearest caregiver when I ask ALFRED for urgent help. ",12,22,5,9
+"As an OlderPerson, I want to receive a message when my home care nurse is on her way. ",15,21,8,3
+"As an OlderPerson, I want to receive a medicine reminder from ALFRED. ",4,13,10,3
+"As an OlderPerson, I want to be able to see whether I already have taken my pills, so that I can avoid an overdose. ",19,13,7,9
+"As a MedicalCaregiver, I want to be able to see if the patient has taken her medicine. ",18,17,6,7
+"As an OlderPerson, I want to use ALFRED to do my grocery shopping. ",1,33,3,10
+"As an OlderPerson, I want to use ALFRED to send messages. ",6,39,8,4
+"As an OlderPerson, I want to have ALFRED to detect falls and send an emergency to a specific contact. ",18,6,5,7
+"As an OlderPerson, I want to have ALFRED to suggest healthy recipes. ",17,28,3,4
+"As an OlderPerson, I want to have ALFRED ask spontaneous questions but it would be better to programme it during certain times of the day. ",16,17,4,4
+"As an OlderPerson, I want to have ALFRED to initiate questions, but it should be in the domains of my interest such as cinema, exhibitions, cooking. ",3,12,9,2
+"As an OlderPerson, I want to be able to call someone with ALFRED. ",20,7,4,1
+"As an OlderPerson, I want to activate the vocal interaction mode of ALFRED by pushing a specific button. ",15,25,1,3
+"As an OlderPerson, I want to use ALFRED to maintain my contact list in my phone. ",1,12,10,7
+"As an OlderPerson, I want to use ALFRED to manage my agenda. ",8,28,7,6
+"As an OlderPerson, I want to insert my meetings into ALFRED using speech. ",9,33,8,7
+"As an OlderPerson, I want to receive reminders on my appointments. ",14,1,6,3
+"As an OlderPerson, I want to receive a reminder from ALFRED on all the things I need to bring with me when I leave the house. ",13,36,1,4
+"As a SocialCaregiver, I want ALFRED to remind me of the things I need to bring to the person I care for. ",16,1,1,10
+"As an OlderPerson, I want to use ALFRED to set up social groups of people with similar diseases. ",14,19,4,8
+"As an OlderPerson, I want to use ALFRED to contact people from my own circle. ",1,8,5,2
+"As an OlderPerson, I want to use ALFRED to learn about art expositions or a museum. ",15,6,5,8
+"As an OlderPerson, I want to use ALFRED to learn about all the social activities that are organized in my neighborhood. ",19,15,8,10
+"As an OlderPerson, I want to use ALFRED to get a personalized invitation to a social event, so that it motivates more to go. ",20,24,5,3
+"As an OlderPerson, I want to use ALFRED to navigate to an event or concert and help me when I am lost. ",9,21,6,3
+"As an OlderPerson, I want to use ALFRED to help me navigate despite my mild cognitive impairments. ",15,4,2,1
+"As an OlderPerson, I want to be able to pay for small amounts. ",1,1,7,6
+"As an OlderPerson, I want to use ALFRED to organize a meeting with a group of friends at a certain place. ",19,19,8,5
+"As an OlderPerson, I want to play online games together with other users. ",12,27,10,5
+"As an OlderPerson, I want to get suggestions for sports classes in my neighbourhood. ",17,21,4,9
+"As an OlderPerson, I want to have ALFRED to enable me to have face to face contacts as well, so that I do not just have virtual contacts over ALFRED. ",13,37,4,5
+"As an OlderPerson, I want to help me to control my body weight. ",16,27,7,10
+"As an OlderPerson, I want to just press one button to call my caregiver. ",3,31,1,3
+"As an OlderPerson, I want to decide who has access to my vital data. ",2,11,1,4
+"As a MedicalCaregiver, I want to be sure that the user can decide who has access to her data. ",10,16,6,10
+"As an OlderPerson, I want to have the wearables with integrated sensors to look good and not to be stigmatizing. ",15,36,1,1
+"As an OlderPerson, I want to see my vital parameters myself on the phone. ",15,24,7,8
+"As an OlderPerson, I want to have the ALFRED shirt to look good. ",14,32,1,3
+"As an OlderPerson, I want to have the ALFRED shirt has to be non stigmatizing. ",19,19,6,7
+"As a MedicalCaregiver, I want to have ALFRED to be able to determine the user's blood pressure. ",10,32,9,2
+"As a MedicalCaregiver, I want to have ALFRED to be able to determine the user's body temperature. ",20,30,9,4
+"As a MedicalCaregiver, I want to have ALFRED to be able to determine the user's heart rate. ",2,35,9,10
+"As a MedicalCaregiver, I want to have ALFRED to be able to determine the user's breathing frequency. ",5,27,4,4
+"As a MedicalCaregiver, I want to have feedback on the activity level of the user. ",13,24,1,10
+"As a MedicalCaregiver, I want to locate the ALFRED user. ",6,31,7,1
+"As a SocialCaregiver, I want to have ALFRED to be able to recognize pain and or stress by using skin conduction sensors. ",10,1,3,3
+"As a SocialCaregiver, I want to have a step counter included into ALFRED. ",6,4,2,1
+"As an OlderPerson, I want to have ALFRED to give me goals and missions that encourage me to do new activities and exercises and to go out. ",18,6,7,2
+"As an OlderPerson, I want to have ALFRED to set limits in the games duration as I get bored easily. ",9,2,9,4
+"As an OlderPerson, I want to play games where I can use my Imagination. ",13,12,7,5
+"As an OlderPerson, I want to do guided exercises with ALFRED and ALFRED should also use sensors to capture health data while I am doing exercises. ",2,21,2,7
+"As an OlderPerson, I want to have games that include my favourite sports. ",4,6,4,5
+"As an OlderPerson, I want to receive suggestions about local sport Classes. ",10,7,5,3
+"As an OlderPerson, I want to have ALFRED to remind me to keep a good body posture. ",13,13,1,1
+"As a MedicalCaregiver, I want to have ALFRED to remind people to exercise regularly. ",20,37,4,5
+"As an OlderPerson, I want to receive specific tips how to reduce my health impairments without medication. ",15,26,1,7
+"As an OlderPerson, I want to have some games that show me how good my memory and physical health is. ",5,40,9,7
+"As an OlderPerson, I want to have training for specific muscle Groups. ",2,31,10,3
+"As a MedicalCaregiver, I want to have ALFRED to offer training for specific muscle groups. ",15,3,6,5
+"As an OlderPerson, I want to be able to see my training Performance. ",7,35,8,10
+"As an OlderPerson, I want to have ALFRED to help to motivate me during the week to do exercise that should change daily, as the constant change motivates me. ",2,25,9,4
+"As a MedicalCaregiver, I want to have ALFRED to propose me games that require the combination of mental and physical exercise, such as opposing motion exercises of the arms and legs. ",5,21,2,5
+"As an OlderPerson, I want to games that require the combination of mental and physical exercise, such as opposing motion exercises of the arms and legs. ",7,34,2,9
+"As a MedicalCaregiver, I want to control if the user does the exercise correct. ",18,25,1,2
+"As a MedicalCaregiver, I want to have a regular summary on how much exercise is performed by the user. ",1,2,2,1
+"As an InformalCaregiver, I want to have a game that the carer could play together with the user, so that it would enable to monitor the users’ state of health but also have some fun time. ",13,31,9,2
+"As a MedicalCaregiver, I want to have ALFRED to propose training that promotes complex thinking. ",4,20,7,7
+"As a MedicalCaregiver, I want to give corrective feedback if exercises are performed wrong, too much or in any other way harmful to the user. ",4,23,8,1
+"As a developer, I want to present my app to as many people as Possible. ",5,4,4,6
+"As a developer, I want to have the accounting to be as simple and clear as Possible. ",17,39,5,6
+"As a developer, I want to easily create and to maintain my apps within the market place. ",7,39,8,2
+"As a developer, I want to enable customers to provide feedback about my App and need an easy way to watch this feedback. ",15,19,3,9
+"As a developer, I want to have an easy way to manage the pricing modality of my Apps. ",5,12,4,3
+"As a developer, I want to have the API to be well defined and well documented. ",1,5,9,4
+"As a developer, I want to obtain Apps development support. ",20,14,3,2
+"As a developer, I want to know the fees the provider of the market place charges for using the platform. ",9,28,3,6
+"As a developer, I want to be notified as soon as possible when the state of any of my Apps changes. ",19,1,1,7
+"As a developer, I want to have detailed information of what happened when my App crashes on the user’s device. ",2,17,3,9
+"As a developer, I want to present my App in several ways. ",16,4,1,3
+"As a developer, I want to be able to design my App on my own - though there will be a few rules I have to stand to. ",10,19,3,4
+"As a developer, I want to have an easy way to define questions the user can ask and perform. ",20,39,6,10
+"As a developer, I want to have my App to be granted access to several operating system features. ",9,14,2,8
+"As a developer, I want to have the API components to be on a high level so that I don’t have to deal with their details. ",15,37,10,9
+"As a developer, I want to have an easy way to read data from health sensors the user is wearing. ",16,10,3,7
+"As a serious games developer, I want to be able to take control over some functions to provide the desired user experience. ",12,9,9,5
+"As a developer, I want to provide an easy way to manage the user Settings. ",2,40,2,5
+"As a developer, I want to have the ALFRED API to reduce the work to achieve my goals. ",4,22,9,6
+"As a developer, I want to have the ALFRED API to reduce the work to achieve my goals.",7,15,2,6
