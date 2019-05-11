@@ -114,6 +114,8 @@ class Parser:
       return None
 
   def get_action_obj_of(self, verb):
+    if verb is None:
+      return None
     obj_list = [child for child in verb.children if child.dep_ == 'dobj']
     if obj_list:
       dobj = obj_list[0]

@@ -251,18 +251,16 @@ class US2SMT:
     known_cols = ['clean', 'doc', 'act', 'act_tokenized', 'User Story', 'role',
                   'topic_id', 'topic_kw_list', 'act_verb', 'act_obj']
     weight_cols = [col for col in processed_df.columns if col not in known_cols]
-    print(processed_df.columns)
     for idx, us in processed_df.iterrows():
       tmp_us = self.UserStory(idx)
       tmp_us.content = us['User Story']
-      tmp_us.role = us['role']
-      tmp_us.action = us['act']
-      tmp_us.act_verb = us['act_verb'].text
-      tmp_us.act_obj = us['act_obj']
-      tmp_us.topic_id = us['topic_id']
-      tmp_us.topic = ', '.join(us['topic_kw_list'])
+      tmp_us.role = us['role'] if us['role'] else 'other'
+      tmp_us.action = us['act'] if us['act'] else 'other'
+      tmp_us.act_verb = us['act_verb'].text if us['act_verb'] else 'other'
+      tmp_us.act_obj = us['act_obj'] if us['act_obj'] else 'other'
+      tmp_us.topic_id = us['topic_id'] if us['topic_id'] else 'other'
+      tmp_us.topic = ', '.join(us['topic_kw_list']) if us['topic_kw_list'] else 'other'
       tmp_us.weight = [(col, us[col]) for col in weight_cols]
-      print(tmp_us.weight)
       if tmp_us.action is not None and tmp_us.role is not None:
         self.user_stories.append(tmp_us)
     return self
