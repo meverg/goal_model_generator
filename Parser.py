@@ -38,7 +38,7 @@ class Parser:
     self.df['act'] = self.df['doc'].apply(self.get_action_of).apply(lambda x: re.sub(r'^to ', '', x))
     self.df['act_tokenized'] = self.df['act'].apply(self.spacy_tokenizer)
     self.df['act_verb'] = self.df['doc'].apply(self.get_verb_token_of)
-    self.df['act_obj'] = self.df['verb'].apply(self.get_action_obj_of)
+    self.df['act_obj'] = self.df['act_verb'].apply(self.get_action_obj_of)
     self.vectorize()
     self.extract_topics()
     self.df['topic_id'] = [self.modeled_data[i].argmax() for i in range(self.modeled_data.shape[0])]
