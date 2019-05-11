@@ -69,6 +69,8 @@ class US2SMT:
       self.pWeight = []
       self.nWeight = []
       self.content = None
+      self.act_verb = None
+      self.act_obj = None
 
   def get_relations(self, type, level):
     if level == 2:
@@ -246,16 +248,21 @@ class US2SMT:
 
   def add_us(self):
     processed_df = self.parser.get_input(self.in_file)
-    known_cols = ['clean', 'doc', 'act', 'act_tokenized', 'User Story']
+    known_cols = ['clean', 'doc', 'act', 'act_tokenized', 'User Story', 'role',
+                  'topic_id', 'topic_kw_list', 'act_verb', 'act_obj']
     weight_cols = [col for col in processed_df.columns if col not in known_cols]
+    print(processed_df.columns)
     for idx, us in processed_df.iterrows():
       tmp_us = self.UserStory(idx)
       tmp_us.content = us['User Story']
       tmp_us.role = us['role']
       tmp_us.action = us['act']
+      tmp_us.act_verb = us['act_verb'].text
+      tmp_us.act_obj = us['act_obj']
       tmp_us.topic_id = us['topic_id']
       tmp_us.topic = ', '.join(us['topic_kw_list'])
       tmp_us.weight = [(col, us[col]) for col in weight_cols]
+      print(tmp_us.weight)
       if tmp_us.action is not None and tmp_us.role is not None:
         self.user_stories.append(tmp_us)
     return self
