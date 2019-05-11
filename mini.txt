@@ -1,0 +1,3 @@
+As a Publisher, I want to publish a dataset, so that I can view just the dataset with a few people.
+As a Publisher, I want to preview a data package I have prepared, so that that I can check it works and share the results.
+As a Data Analyst, I want to compare different versions of some data package locally, so that that I can see schema changes clearly and adjust my analytics code to the desired schema version.

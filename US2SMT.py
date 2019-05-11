@@ -76,16 +76,23 @@ class US2SMT:
     if level == 2:
       dot, dictn = self.or_(type)
     else:
-      dot, dictn = self.and_()
+      dot, dictn = self.and_(type)
     return dot, dictn
 
-  def and_(self):
+  def and_(self, type):
     refinement_id = self.refinement_id
     goal_id = self.goal_id
     dictn = self.dictn
     dot = self.dot
+
     for u in self.user_stories:
-      nm = u.role + "_" + u.topic
+      if type == 2:
+        up = u.role
+        dw = u.topic
+      else:
+        up = u.role
+        dw = u.act_verb
+      nm = up + "_" + dw
       if contains(self.goals, lambda g: g.name == nm):
         new_goal = self.Goal(goal_id)
         dictn['G' + str(goal_id)] = u.action
@@ -105,14 +112,14 @@ class US2SMT:
         new_ref.parent = list(filter(lambda g: g.name == nm, self.goals))[0].id_
         list(filter(lambda g: g.name == nm, self.goals))[0].children.append(new_ref)
         self.refinements.append(new_ref)
-      elif contains(self.goals, lambda g: g.name == u.role):
+      elif contains(self.goals, lambda g: g.name == up):
         new_goal = self.Goal(goal_id)
         dictn['G' + str(goal_id)] = nm
-        dot.node(new_goal.id_, u.topic)
+        dot.node(new_goal.id_, dw)
         goal_id += 1
         new_goal.name = nm
         self.goals.append(new_goal)
-        g_id = list(filter(lambda g: g.name == u.role, self.goals))[0].id_
+        g_id = list(filter(lambda g: g.name == up, self.goals))[0].id_
         new_ref = list(filter(lambda r: r.parent == g_id, self.refinements))[0]
         new_ref.children.append(new_goal)
         new_goal = self.Goal(goal_id)
@@ -135,12 +142,12 @@ class US2SMT:
         self.refinements.append(new_ref)
       else:
         new_goal = self.Goal(goal_id)
-        dictn['G' + str(goal_id)] = u.role
-        dot.node(new_goal.id_, u.role)
+        dictn['G' + str(goal_id)] = up
+        dot.node(new_goal.id_, up)
         goal_id += 1
         new_goal.set_root()
         new_goal.set_mandatory()
-        new_goal.name = u.role
+        new_goal.name = up
         self.goals.append(new_goal)
         new_ref = self.Refinement(refinement_id)
         dot.node(new_ref.id_, shape='point')
@@ -151,11 +158,11 @@ class US2SMT:
         new_goal.children.append(new_ref)
         new_goal = self.Goal(goal_id)
         dictn['G' + str(goal_id)] = nm
-        dot.node(new_goal.id_, u.topic)
+        dot.node(new_goal.id_, dw)
         goal_id += 1
         new_goal.name = nm
         self.goals.append(new_goal)
-        g_id = list(filter(lambda g: g.name == u.role, self.goals))[0].id_
+        g_id = list(filter(lambda g: g.name == up, self.goals))[0].id_
         new_ref = list(filter(lambda r: r.parent == g_id, self.refinements))[0]
         new_ref.children.append(new_goal)
         new_goal = self.Goal(goal_id)
@@ -186,8 +193,10 @@ class US2SMT:
     for u in self.user_stories:
       if type == 1:
         rl = u.role
-      else:
+      elif type == 2:
         rl = u.topic
+      else:
+        rl = u.act_verb
       if contains(self.goals, lambda g: g.name == rl):
         new_goal = self.Goal(goal_id)
         dictn['G' + str(goal_id)] = u.action
@@ -262,6 +271,8 @@ class US2SMT:
       tmp_us.topic = ', '.join(us['topic_kw_list']) if us['topic_kw_list'] else 'other'
       tmp_us.weight = [(col, us[col]) for col in weight_cols]
       if tmp_us.action is not None and tmp_us.role is not None:
+        if contains(self.user_stories, lambda s: s.role == tmp_us.role and s.action == tmp_us.action):
+          continue
         self.user_stories.append(tmp_us)
     return self
 
@@ -271,8 +282,12 @@ class US2SMT:
       dot, dictn = self.get_relations(1, 2)
     elif self.opt2 == '2':
       dot, dictn = self.get_relations(2, 2)
+    elif self.opt2 == '3':
+      dot, dictn = self.get_relations(2, 3)
+    elif self.opt2 == '4':
+      dot, dictn = self.get_relations(3, 2)
     else:
-      dot, dictn = self.get_relations(1, 3)
+      dot, dictn = self.get_relations(3, 3)
 
     smt += '(set-option :produce-models true)\r\n'
 

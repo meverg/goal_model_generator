@@ -1,42 +1,35 @@
 <html>
-<body>
+<body bgcolor="#CAECFF">
 <h1 align="center">Release Model Generator from User Stories</h1>
-<p align="center">Upload your user story set in .txt format.</p>
-<p align="center">It should contain one proper user story and equal number of maximization or minimization values in each line.</p>
-<p align="center">Select a type to configure optimathsat to optimize in lexicographic, pareto or boxed mode when dealing multiple objectives.</p>
-<p align="center">(For lexicographic optimization, sort objectives in your user story set.)</p>
-<p align="center">Select a release model.</p>
-<p align="center">Type maximization objectives. They should be seperated by comma and identical with in user story set.</p>
-<p align="center">Then send it to get your optimal model.</p>
-<form align="left "action="{{ url_for('solve_us') }}" method="POST" enctype="multipart/form-data">
-    
+<form align="center" action="{{ url_for('solve_us') }}" method="POST" enctype="multipart/form-data">
+    <p align="center">Upload your user story set in .txt format.</p>
+    <p align="center">It should contain one proper user story and equal number of maximization or minimization values in each line.</p>
     <input type="file" name="us_file" required/><br>
-    
+    <p align="center">Select a type to configure optimathsat to optimize in lexicographic, pareto or boxed mode when dealing multiple objectives.</p>
     <select id="opt" name="opt">
-        <option value="1">box</option>
-        <option value="2" selected="true">lex</option>
-        <option value="3">pareto</option>
-    </select><br>
-    
-    <select id="opt2" name="opt2">
-        <option value="1">2-layered (role)</option>
-        <option value="2" selected="true">2-layered (topic)</option>
-        <option value="3">3-layered</option>
-    </select><br>
-    
-    <input type="text" name="max" value=""><br>
-    
+        <option value="3" selected="true">Pareto</option>
+        <option value="1">Box</option>
+        <option value="2">Lex</option>
+    </select><br>  
+    <p align="center">Select a release model.</p>
+    <label><input type="radio" name="opt2" value="5" checked="true">Role-Action<img src="./static/role_action.png" alt="Role-Action" width="200" height="200"/></label>
+    <label><input type="radio" name="opt2" value="3">Role-Topic<img src="./static/role_topic.png" alt="Role-Topic" width="200" height="200"/></label>
+    <label><input type="radio" name="opt2" value="1">Role<img src="./static/role.png" alt="Role" width="200" height="200"/></label>
+    <label><input type="radio" name="opt2" value="2">Topic<img src="./static/topic.png" alt="Topic" width="200" height="200"/></label>
+    <label><input type="radio" name="opt2" value="4">Action<img src="./static/action.png" alt="Action" width="200" height="200"/></label>   
+    <p align="center">Type maximization objectives. They should be seperated by comma and identical with in user story set:</p>
+    <p align="center">(For lexicographic optimization, sort objectives in your user story set.)</p>
+    <input type="text" name="max" value=""><br><br>
     <select id="model_selection" name="model_selection">
         <option value="LDA" selected="selected">LDA</option>
         <option value="NNMF">NNMF</option>
         <option value="LSI">LSI</option>
-    </select>
-    
+    </select>   
     <select id="vectorizer_selection" name="vectorizer_selection">
         <option value="COUNT" selected="selected">Count</option>
         <option value="TFIDF">TF-IDF</option>
-    </select>
-    
+    </select>  
+    <p align="center">Then send it to get your optimal model.</p>
     <input type="submit"/>
 
 </form>
