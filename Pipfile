@@ -13,6 +13,7 @@ en-core-web-md = {file = "https://github.com/explosion/spacy-models/releases/dow
 python-dotenv = "*"
 graphviz = "*"
 sklearn = "*"
+gensim = "*"
 
 [requires]
 python_version = "3.7"
