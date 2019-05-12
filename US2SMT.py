@@ -1,5 +1,6 @@
 import os
 from graphviz import Digraph
+import time
 
 
 def get_oms_out():
@@ -256,7 +257,10 @@ class US2SMT:
     return self
 
   def add_us(self):
+    t_start = time.time()
     processed_df = self.parser.get_input(self.in_file)
+    t_end = time.time()
+    print('Parser time: {}'.format(t_end-t_start))
     known_cols = ['clean', 'doc', 'act', 'act_tokenized', 'User Story', 'role',
                   'topic_id', 'topic_kw_list', 'act_verb', 'act_obj']
     weight_cols = [col for col in processed_df.columns if col not in known_cols]
@@ -264,11 +268,11 @@ class US2SMT:
       tmp_us = self.UserStory(idx)
       tmp_us.content = us['User Story']
       tmp_us.role = us['role'] if us['role'] else 'other'
-      tmp_us.action = us['act'] if us['act'] else 'other'
+      tmp_us.action = us['act_span'].text if us['act_span'] else 'other'
       tmp_us.act_verb = us['act_verb'].text if us['act_verb'] else 'other'
       tmp_us.act_obj = us['act_obj'] if us['act_obj'] else 'other'
       tmp_us.topic_id = us['topic_id'] if us['topic_id'] else 'other'
-      tmp_us.topic = ', '.join(us['topic_kw_list']) if us['topic_kw_list'] else 'other'
+      tmp_us.topic = us['topic_kw'] if us['topic_kw'] else 'other'
       tmp_us.weight = [(col, us[col]) for col in weight_cols]
       if tmp_us.action is not None and tmp_us.role is not None:
         if contains(self.user_stories, lambda s: s.role == tmp_us.role and s.action == tmp_us.action):
