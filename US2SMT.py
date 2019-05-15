@@ -261,8 +261,8 @@ class US2SMT:
     processed_df = self.parser.get_input(self.in_file)
     t_end = time.time()
     print('Parser time: {}'.format(t_end-t_start))
-    known_cols = ['clean', 'doc', 'act', 'act_tokenized', 'User Story', 'role',
-                  'topic_id', 'topic_kw_list', 'act_verb', 'act_obj']
+    known_cols = ['clean', 'doc', 'act_tokenized', 'act_span', 'User Story', 'role',
+                  'topic_id', 'topic_kw', 'act_verb', 'act_obj']
     weight_cols = [col for col in processed_df.columns if col not in known_cols]
     for idx, us in processed_df.iterrows():
       tmp_us = self.UserStory(idx)
