@@ -38,6 +38,7 @@ class Parser:
     self.df['doc'] = self.df['clean'].apply(self.nlp)
     self.df['role'] = self.df['doc'].apply(self.get_role_of)
     self.df['act_span'] = self.df['doc'].apply(self.get_action_span_of)
+    self.df = self.df[self.df['act_span'].notnull()]
     # self.df['act_tokenized'] = self.df['act_span'].apply(self.spacy_tokenizer)
     self.df['act_tokenized'] = self.get_act_tokenized()
     self.df['act_verb'] = self.df['act_span'].apply(lambda row: row.root)
