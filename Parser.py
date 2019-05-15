@@ -18,8 +18,8 @@ def sort_topics(topic_probs):
 class Parser:
 
   def __init__(self, nlp, model_selection='LDA', vectorizer_selection='COUNT'):
-    self.want_token = nlp('want')
-    self.as_token = nlp('as')
+    self.want_token = nlp('want')[0]
+    self.as_token = nlp('as')[0]
     self.vectorizer_selection = vectorizer_selection  # COUNT or TFIDF
     self.model_selection = model_selection  # LDA or NNMF or LSI
     self.nlp = nlp
@@ -71,7 +71,7 @@ class Parser:
 
   def get_action_span_of(self, doc, idx=0):
     try:
-      root = [token for token in doc if token.has_vector and token.similarity(self.want_token) >= 0.9][0]
+      root = [token for token in doc if token.has_vector and token.lemma_ == self.want_token.lemma_][0]
       act_root_list = [child for child in root.children if child.dep_ in ['xcomp', 'dobj', 'ccomp']]
       if act_root_list:
         act_root = act_root_list[0]
@@ -88,7 +88,7 @@ class Parser:
 
   def get_role_of(self, doc):
     try:
-      root = [token for token in doc if token.has_vector and token.similarity(self.as_token) >= 0.9][0]
+      root = [token for token in doc if token.has_vector and token.lemma_ == self.as_token.lemma_][0]
       if root:
         role_subj_list = [child for child in root.children if child.dep_ == 'pobj']
         if role_subj_list:
