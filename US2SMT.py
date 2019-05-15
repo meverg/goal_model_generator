@@ -331,10 +331,11 @@ class US2SMT:
       if g.isLeaf:
         smt += '(assert-soft (not ' + g.id_ + ' ) :id sat_tasks)\r\n'
         for p in g.pWeight:
-          smt += '(assert-soft ' + g.id_ + ' :weight ' + str(p[1]) + ' :id ' + p[0] + ')\r\n'
+          smt += '(assert-soft (not ' + g.id_ + ' ) :weight ' + str(p[1]) + ' :id ' + p[0] + ')\r\n'
         for n in g.nWeight:
-          smt += '(assert-soft ' + g.id_ + ' :weight ' + str(n[1]) + ' :id ' + n[0] + ')\r\n'
+          smt += '(assert-soft (not ' + g.id_ + ' ) :weight ' + str(n[1]) + ' :id ' + n[0] + ')\r\n'
 
+    smt += '(minimize unsat_requirements)\r\n(minimize sat_tasks)\r\n'
     ws = self.max_.split(',')
     for w in self.user_stories[0].weight:
 
@@ -343,7 +344,7 @@ class US2SMT:
       else:
         smt += '(minimize ' + w[0] + ')\r\n'
 
-    smt += '(minimize unsat_requirements)\r\n(minimize sat_tasks)\r\n(check-sat)\r\n'
+    smt += '(check-sat)\r\n'
     smt += '(get-objectives)\r\n(load-objective-model 1)\r\n(get-model)\r\n(exit)'
 
     f = open("output.txt", "w")
