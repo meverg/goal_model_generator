@@ -1,0 +1,6 @@
+User Story,w_0,w_1
+"As a user I want to see popular accounts in the product so that I can make them more popular.",3,1
+"As a user I want to try to make my account popular so that I can be more loyal to the product.",4,9
+"As a user I want to relate to trends in different ways so that I can perceive myself as a being in the system.",5,9
+"As an admin I want to start artificial trends in the system.",2,6
+"As an admin I want to make accounts popular in exchange to reasonable amounts of money.",7,1

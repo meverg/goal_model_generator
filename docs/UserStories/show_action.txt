@@ -1,0 +1,6 @@
+User Story,w_0,w_1
+"As a user I want to add my private personal data to the system so that I can be the real product.",3,1
+"As a user I want to add my credit card information to the system so that I can never sleep in peace at nights.",4,9
+"As a user I want to delete my account from the system so that I can never be sure if my data is still being kept.",5,9
+"As an admin I want to delete any account from the system so that I can have absolute power over the users.",2,6
+"As an admin I want to add fake accounts to the system so that I can make the user believe they are using a popular product.",7,1
