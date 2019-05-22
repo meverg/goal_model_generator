@@ -280,6 +280,7 @@ class US2SMT:
         self.user_stories.append(tmp_us)
     return self
 
+  #Generates .smt2 file
   def get_smt_input(self):
     smt = self.smt
     if self.opt2 == '1':
